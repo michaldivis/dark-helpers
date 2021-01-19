@@ -5,9 +5,9 @@ using Xamarin.Forms.Xaml;
 namespace Sample.XF.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HomeView : DarkXfViewBase<HomeViewModel>
+    public partial class ObservableCollectionView : DarkXfViewBase<ObservableCollectionViewModel>
     {
-        public HomeView(HomeViewModel vm) : base(vm)
+        public ObservableCollectionView(ObservableCollectionViewModel vm) : base(vm)
         {
             InitializeComponent();
         }

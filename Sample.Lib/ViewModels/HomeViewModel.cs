@@ -12,12 +12,16 @@ namespace Sample.Lib.ViewModels
 
         private async Task OpenObservableCollectionAsync()
         {
+            IsBusy = true;
             await FakeDiContainer.DarkNavigationService.PushAsync(new ObservableCollectionViewModel());
+            IsBusy = false;
         }
 
         private async Task OpenCommandsAsync()
         {
+            IsBusy = true;
             await FakeDiContainer.DarkNavigationService.PushAsync(new CommandsViewModel());
+            IsBusy = false;
         }
     }
 }

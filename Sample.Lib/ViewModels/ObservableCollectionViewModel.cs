@@ -19,27 +19,37 @@ namespace Sample.Lib.ViewModels
 
         private void Clear()
         {
+            IsBusy = true;
             Items.Clear();
+            IsBusy = false;
         }
 
         private void AddItem()
         {
+            IsBusy = true;
             Items.Add(new Item(Guid.NewGuid().ToString()));
+            IsBusy = false;
         }
 
         private void AddItems()
         {
+            IsBusy = true;
             Items.AddRange(Enumerable.Range(1,5).Select(a => GetRandomItem()));
+            IsBusy = false;
         }
 
         private void ReplaceItem()
         {
+            IsBusy = true;
             Items.Replace(GetRandomItem());
+            IsBusy = false;
         }
 
         private void ReplaceItems()
         {
+            IsBusy = true;
             Items.ReplaceRange(Enumerable.Range(1, 5).Select(a => GetRandomItem()));
+            IsBusy = false;
         }
 
         private Item GetRandomItem()

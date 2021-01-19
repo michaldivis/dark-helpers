@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <darkViews:DarkXfViewBase
-    x:Class="Sample.XF.Views.HomeView"
+    x:Class="Sample.XF.Views.CommandsView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:darkViews="clr-namespace:DarkHelpers.XF;assembly=DarkHelpers.XF"
     xmlns:viewModels="clr-namespace:Sample.Lib.ViewModels;assembly=Sample.Lib"
-    Title="Home"
-    x:TypeArguments="viewModels:HomeViewModel">
+    Title="Commands demo"
+    x:TypeArguments="viewModels:CommandsViewModel">
     <ContentPage.Content>
         <StackLayout Padding="10" Spacing="10">
             <Button
                 Margin="5"
-                Command="{Binding ObservableCollectionCommand}"
+                Command="{Binding NormalCommand}"
                 IsEnabled="{Binding IsNotBusy}"
-                Text="Observable collection demo" />
+                Text="Synchronous command" />
             <Button
                 Margin="5"
-                Command="{Binding CommandsCommand}"
+                Command="{Binding AsynchronousCommand}"
                 IsEnabled="{Binding IsNotBusy}"
-                Text="Commands demo" />
+                Text="Asynchronous command" />
         </StackLayout>
     </ContentPage.Content>
 </darkViews:DarkXfViewBase>

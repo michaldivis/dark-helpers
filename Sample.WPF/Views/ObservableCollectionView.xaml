@@ -22,23 +22,28 @@
                 <Button
                     Margin="5"
                     Command="{Binding ClearCommand}"
-                    Content="Clear items" />
+                    Content="Clear items"
+                    IsEnabled="{Binding IsNotBusy}" />
                 <Button
                     Margin="5"
                     Command="{Binding AddItemCommand}"
-                    Content="Add an item" />
+                    Content="Add an item"
+                    IsEnabled="{Binding IsNotBusy}" />
                 <Button
                     Margin="5"
                     Command="{Binding AddItemsCommand}"
-                    Content="Add 5 items" />
+                    Content="Add 5 items"
+                    IsEnabled="{Binding IsNotBusy}" />
                 <Button
                     Margin="5"
                     Command="{Binding ReplaceWithItemCommand}"
-                    Content="Replace with an item" />
+                    Content="Replace with an item"
+                    IsEnabled="{Binding IsNotBusy}" />
                 <Button
                     Margin="5"
                     Command="{Binding ReplaceWithItemsCommand}"
-                    Content="Replace with 5 items" />
+                    Content="Replace with 5 items"
+                    IsEnabled="{Binding IsNotBusy}" />
             </StackPanel>
         </Border>
 

@@ -16,11 +16,13 @@
             <Button
                 Margin="5"
                 Command="{Binding ObservableCollectionCommand}"
-                Content="Observable collection demo" />
+                Content="Observable collection demo"
+                IsEnabled="{Binding IsNotBusy}" />
             <Button
                 Margin="5"
                 Command="{Binding CommandsCommand}"
-                Content="Commands demo" />
+                Content="Commands demo"
+                IsEnabled="{Binding IsNotBusy}" />
         </WrapPanel>
     </Border>
 </darkViews:DarkWpfViewBase>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<darkViews:DarkXfViewBase
+    x:Class="Sample.XF.Views.ObservableCollectionView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:darkViews="clr-namespace:DarkHelpers.XF;assembly=DarkHelpers.XF"
+    xmlns:viewModels="clr-namespace:Sample.Lib.ViewModels;assembly=Sample.Lib"
+    Title="Observable collection demo"
+    x:TypeArguments="viewModels:ObservableCollectionViewModel">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10" Spacing="10">
+                <Button
+                    Margin="5"
+                    Command="{Binding ClearCommand}"
+                    IsEnabled="{Binding IsNotBusy}"
+                    Text="Clear items" />
+                <Button
+                    Margin="5"
+                    Command="{Binding AddItemCommand}"
+                    IsEnabled="{Binding IsNotBusy}"
+                    Text="Add an item" />
+                <Button
+                    Margin="5"
+                    Command="{Binding AddItemsCommand}"
+                    IsEnabled="{Binding IsNotBusy}"
+                    Text="Add 5 items" />
+                <Button
+                    Margin="5"
+                    Command="{Binding ReplaceWithItemCommand}"
+                    IsEnabled="{Binding IsNotBusy}"
+                    Text="Replace with an item" />
+                <Button
+                    Margin="5"
+                    Command="{Binding ReplaceWithItemsCommand}"
+                    IsEnabled="{Binding IsNotBusy}"
+                    Text="Replace with 5 items" />
+
+                <StackLayout BindableLayout.ItemsSource="{Binding Items}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding Name}" />
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</darkViews:DarkXfViewBase>
