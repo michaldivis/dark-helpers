@@ -66,12 +66,12 @@ namespace DarkHelpers
 		/// <summary>
 		/// One time initialzation method, to be called when the view model is first used
 		/// </summary>
-		public virtual async Task InitializeAsync() { }
+		public virtual async Task OnInitializeAsync() { }
 
 		/// <summary>
 		/// To be called whenever the view model is brought to user's attention, i.e. anytime the corresponding view is shown
 		/// </summary>
-		public virtual async Task RefreshAsync() { }
+		public virtual async Task OnRefreshAsync() { }
 
 		/// <summary>
 		/// To be called before a view is exited, determines whether the exit should be continued or cancelled

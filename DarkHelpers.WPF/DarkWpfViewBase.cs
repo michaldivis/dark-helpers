@@ -26,7 +26,7 @@ namespace DarkHelpers.WPF
         protected override async void OnContentRendered(EventArgs e)
         {
             base.OnContentRendered(e);
-            await _viewModel.InitializeAsync();
+            await _viewModel.OnInitializeAsync();
         }
 
         protected override async void OnClosing(CancelEventArgs e)

@@ -18,10 +18,10 @@ namespace DarkHelpers.XF
             base.OnAppearing();
             if (!_initialized)
             {
-                await _viewModel.InitializeAsync();
+                await _viewModel.OnInitializeAsync();
                 _initialized = true;
             }
-            await _viewModel.RefreshAsync();
+            await _viewModel.OnRefreshAsync();
         }
 
         protected override async void OnDisappearing()
