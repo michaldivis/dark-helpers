@@ -1,4 +1,6 @@
-﻿namespace DarkHelpers
+﻿using System.Threading.Tasks;
+
+namespace DarkHelpers
 {
     /// <summary>
 	/// Base view model
@@ -60,5 +62,27 @@
 			get => _isLoadingMore;
 			set => SetProperty(ref _isLoadingMore, value);
 		}
+
+		/// <summary>
+		/// One time initialzation method, to be called when the view model is first used
+		/// </summary>
+		public virtual async Task InitializeAsync() { }
+
+		/// <summary>
+		/// To be called whenever the view model is brought to user's attention, i.e. anytime the corresponding view is shown
+		/// </summary>
+		public virtual async Task RefreshAsync() { }
+
+		/// <summary>
+		/// To be called before a view is exited, determines whether the exit should be continued or cancelled
+		/// </summary>
+		/// <returns></returns>
+		public virtual async Task<bool> OnBeforeExitAsync() { return false; }
+
+		/// <summary>
+		/// To be called when a view is exiting, useful for any cleanup work
+		/// </summary>
+		/// <returns><c>true</c> is the exit should be cancelled; otherwise, <c>false</c></returns>
+		public virtual async Task OnExitAsync() { }
 	}
 }

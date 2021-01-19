@@ -7,7 +7,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/michaldivis/DarkHelpers</PackageProjectUrl>
     <RepositoryUrl>https://github.com/michaldivis/DarkHelpers</RepositoryUrl>
-    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+    <PackageReleaseNotes>Navigation service</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>icon.png</PackageIcon>
     <PackageId>Divis.DarkHelpers</PackageId>
