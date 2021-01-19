@@ -13,14 +13,6 @@
     mc:Ignorable="d">
     <Border Padding="10">
         <WrapPanel>
-            <WrapPanel.Resources>
-                <Style TargetType="Button">
-                    <Setter Property="Padding" Value="10" />
-                    <Setter Property="Background" Value="#606060" />
-                    <Setter Property="Foreground" Value="#ffffff" />
-                    <Setter Property="BorderThickness" Value="0" />
-                </Style>
-            </WrapPanel.Resources>
             <Button Command="{Binding ObservableCollectionCommand}" Content="Observable collection demo" />
         </WrapPanel>
     </Border>
