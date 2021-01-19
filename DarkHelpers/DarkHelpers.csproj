@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Authors>Michal Diviš</Authors>
+    <Description>A collection of MVVM helpers for Xamarin.Forms</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/michaldivis/DarkHelpers</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/michaldivis/DarkHelpers</RepositoryUrl>
+    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageId>Divis.DarkHelpers</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="assets\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
