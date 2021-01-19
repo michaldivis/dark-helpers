@@ -3,7 +3,7 @@ using DarkHelpers.Commands;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Sample.WPF.ViewModels
+namespace Sample.Lib.ViewModels
 {
     public class CommandsViewModel : DarkViewModel
     {

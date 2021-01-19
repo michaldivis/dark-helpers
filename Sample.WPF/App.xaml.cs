@@ -1,6 +1,7 @@
 ﻿using DarkHelpers.Interfaces;
 using DarkHelpers.WPF;
-using Sample.WPF.ViewModels;
+using Sample.Lib;
+using Sample.Lib.ViewModels;
 using Sample.WPF.Views;
 using System.Windows;
 

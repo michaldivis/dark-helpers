@@ -1,11 +1,11 @@
 ﻿using DarkHelpers;
 using DarkHelpers.Commands;
-using Sample.WPF.Models;
+using Sample.Lib.Models;
 using System;
 using System.Linq;
 using System.Windows.Input;
 
-namespace Sample.WPF.ViewModels
+namespace Sample.Lib.ViewModels
 {
     public class ObservableCollectionViewModel : DarkViewModel
     {

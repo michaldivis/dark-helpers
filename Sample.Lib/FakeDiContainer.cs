@@ -1,6 +1,6 @@
 ﻿using DarkHelpers.Interfaces;
 
-namespace Sample.WPF
+namespace Sample.Lib
 {
     public static class FakeDiContainer
     {

@@ -1,5 +1,5 @@
 ﻿using DarkHelpers.WPF;
-using Sample.WPF.ViewModels;
+using Sample.Lib.ViewModels;
 
 namespace Sample.WPF.Views
 {

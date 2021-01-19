@@ -1,4 +1,4 @@
-﻿namespace Sample.WPF.Models
+﻿namespace Sample.Lib.Models
 {
     public class Item
     {

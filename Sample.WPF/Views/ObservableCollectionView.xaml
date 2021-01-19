@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:darkViews="clr-namespace:DarkHelpers.WPF;assembly=DarkHelpers.WPF"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewModels="clr-namespace:Sample.WPF.ViewModels"
+    xmlns:viewModels="clr-namespace:Sample.Lib.ViewModels;assembly=Sample.Lib"
     Title="Observable collection demo"
     Width="800"
     Height="450"
