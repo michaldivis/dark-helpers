@@ -23,11 +23,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.XF.Android", "Sample
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.XF.iOS", "Sample.XF\Sample.XF.iOS\Sample.XF.iOS.csproj", "{5F867FA8-F10C-40D2-B517-22F3CA87258D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.XF", "Sample.XF\Sample.XF\Sample.XF.csproj", "{6075DA5B-C839-41B9-9D18-BDD5771B5C6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.XF", "Sample.XF\Sample.XF\Sample.XF.csproj", "{6075DA5B-C839-41B9-9D18-BDD5771B5C6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Lib", "Sample.Lib\Sample.Lib.csproj", "{1620165E-025E-4AD1-BD50-D91DC087B02D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Lib", "Sample.Lib\Sample.Lib.csproj", "{1620165E-025E-4AD1-BD50-D91DC087B02D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkHelpers.XF", "DarkHelpers.XF\DarkHelpers.XF.csproj", "{F647E896-AEBF-449A-867D-89547CCD292C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DarkHelpers.XF", "DarkHelpers.XF\DarkHelpers.XF.csproj", "{F647E896-AEBF-449A-867D-89547CCD292C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DCDF5D3F-8C89-4CCA-86D0-1EB9609B347C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkHelpers.Tests", "DarkHelpers.Tests\DarkHelpers.Tests.csproj", "{5A26E722-60B1-4A1B-BD70-73B4E3309E52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -139,6 +143,18 @@ Global
 		{F647E896-AEBF-449A-867D-89547CCD292C}.Release|iPhone.Build.0 = Release|Any CPU
 		{F647E896-AEBF-449A-867D-89547CCD292C}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{F647E896-AEBF-449A-867D-89547CCD292C}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{5A26E722-60B1-4A1B-BD70-73B4E3309E52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A26E722-60B1-4A1B-BD70-73B4E3309E52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A26E722-60B1-4A1B-BD70-73B4E3309E52}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{5A26E722-60B1-4A1B-BD70-73B4E3309E52}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{5A26E722-60B1-4A1B-BD70-73B4E3309E52}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{5A26E722-60B1-4A1B-BD70-73B4E3309E52}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{5A26E722-60B1-4A1B-BD70-73B4E3309E52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A26E722-60B1-4A1B-BD70-73B4E3309E52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A26E722-60B1-4A1B-BD70-73B4E3309E52}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{5A26E722-60B1-4A1B-BD70-73B4E3309E52}.Release|iPhone.Build.0 = Release|Any CPU
+		{5A26E722-60B1-4A1B-BD70-73B4E3309E52}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{5A26E722-60B1-4A1B-BD70-73B4E3309E52}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -152,6 +168,7 @@ Global
 		{6075DA5B-C839-41B9-9D18-BDD5771B5C6A} = {CED33661-341E-4098-92B4-B24D08C6D62C}
 		{1620165E-025E-4AD1-BD50-D91DC087B02D} = {CED33661-341E-4098-92B4-B24D08C6D62C}
 		{F647E896-AEBF-449A-867D-89547CCD292C} = {B1E0B231-C889-4156-AB5D-84EB65713D49}
+		{5A26E722-60B1-4A1B-BD70-73B4E3309E52} = {DCDF5D3F-8C89-4CCA-86D0-1EB9609B347C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {60CFE31D-F927-47FA-B4BA-B4B3D4713C3F}
