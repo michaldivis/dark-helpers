@@ -1,0 +1,15 @@
+name: Unit tests
+
+on:
+  release:
+    types: [published, created, edited]
+
+jobs:
+  Tests:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Tests
+      run: |
+        dotnet restore
+        dotnet test DarkHelpers.Tests/DarkHelpers.Tests.csproj
