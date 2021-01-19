@@ -2,6 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <Version>0.1.2</Version>
+    <PackageId>Divis.DarkHelpers.XF</PackageId>
+    <Authors>Michal Diviš</Authors>
+    <Description>Xamarin.Forms implementations for the general DarkHelpers library</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/michaldivis/DarkHelpers</PackageProjectUrl>
+    <PackageTags>mvvm, xamarin.forms, command, observablecollection, navigation service</PackageTags>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,6 +20,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DarkHelpers\DarkHelpers.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="assets\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

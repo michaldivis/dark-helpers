@@ -13,8 +13,8 @@
     <PackageProjectUrl>https://github.com/michaldivis/DarkHelpers</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/michaldivis/DarkHelpers</RepositoryUrl>
-    <PackageTags>mvvm, wpf, command, observablecollection</PackageTags>
-    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+    <PackageTags>mvvm, wpf, command, observablecollection, navigation service</PackageTags>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
 

@@ -7,11 +7,11 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/michaldivis/DarkHelpers</PackageProjectUrl>
     <RepositoryUrl>https://github.com/michaldivis/DarkHelpers</RepositoryUrl>
-    <PackageReleaseNotes>Navigation service</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>icon.png</PackageIcon>
     <PackageId>Divis.DarkHelpers</PackageId>
-    <PackageTags>mvvm, xamarin.forms, wpf, command, observablecollection</PackageTags>
+    <PackageTags>mvvm, xamarin.forms, wpf, command, observablecollection, navigation service</PackageTags>
     <NeutralLanguage>en-US</NeutralLanguage>
     <AssemblyVersion>0.1.2.0</AssemblyVersion>
     <FileVersion>0.1.2.0</FileVersion>
