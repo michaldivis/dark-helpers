@@ -10,7 +10,12 @@ namespace DarkHelpers.Navigation
         protected object GetPageByViewModel<TViewModel>(TViewModel viewModel) where TViewModel : DarkViewModel
         {
             var viewModelType = viewModel.GetType();
-            _registeredTypes.TryGetValue(viewModelType, out var viewType);
+            var viewModelTypeFound = _registeredTypes.TryGetValue(viewModelType, out var viewType);
+
+            if (!viewModelTypeFound)
+            {
+                throw new Exception($"No view has been registered for the VM class {typeof(TViewModel)}. Make sure to register it via the {nameof(GetPageByViewModel)} method first.");
+            }
 
             var viewCtor = viewType.GetConstructor(new Type[] { viewModelType });
 
@@ -20,7 +25,7 @@ namespace DarkHelpers.Navigation
                 return view;
             }
 
-            throw new ArgumentException($"No view has been registered for the VM class {typeof(TViewModel)}. Make sure to register it via the {nameof(GetPageByViewModel)} method first.");
+            throw new Exception($"View of type {viewType} doesn't have a constructor which takes {typeof(TViewModel)}. The view cannot be constructed.");
         }
 
         protected DarkViewModel TryToCreateViewModel<TViewModel>() where TViewModel : DarkViewModel, new()

@@ -28,6 +28,7 @@ namespace Sample.WPF
             var nav = new DarkWpfNavigationService();
             nav.Register<HomeViewModel, HomeView>();
             nav.Register<ObservableCollectionViewModel, ObservableCollectionView>();
+            nav.Register<CommandsViewModel, CommandsView>();
             return nav;
         }
 

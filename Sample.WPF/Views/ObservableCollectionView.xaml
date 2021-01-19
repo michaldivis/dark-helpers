@@ -20,22 +20,25 @@
         <Border Grid.Column="0" Padding="5">
             <StackPanel>
                 <Button
-                    Margin="0,0,0,5"
+                    Margin="5"
                     Command="{Binding ClearCommand}"
                     Content="Clear items" />
                 <Button
-                    Margin="0,0,0,5"
+                    Margin="5"
                     Command="{Binding AddItemCommand}"
                     Content="Add an item" />
                 <Button
-                    Margin="0,0,0,5"
+                    Margin="5"
                     Command="{Binding AddItemsCommand}"
                     Content="Add 5 items" />
                 <Button
-                    Margin="0,0,0,5"
+                    Margin="5"
                     Command="{Binding ReplaceWithItemCommand}"
                     Content="Replace with an item" />
-                <Button Command="{Binding ReplaceWithItemsCommand}" Content="Replace with 5 items" />
+                <Button
+                    Margin="5"
+                    Command="{Binding ReplaceWithItemsCommand}"
+                    Content="Replace with 5 items" />
             </StackPanel>
         </Border>
 
