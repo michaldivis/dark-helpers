@@ -15,6 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution items", "solution 
 	ProjectSection(SolutionItems) = preProject
 		LICENSE = LICENSE
 		README.md = README.md
+		TODOLIST.md = TODOLIST.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DarkHelpers.WPF", "DarkHelpers.WPF\DarkHelpers.WPF.csproj", "{57C8DB5E-7931-4971-BB17-200D1FBF0078}"
@@ -31,7 +32,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DarkHelpers.XF", "DarkHelpe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DCDF5D3F-8C89-4CCA-86D0-1EB9609B347C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkHelpers.Tests", "DarkHelpers.Tests\DarkHelpers.Tests.csproj", "{5A26E722-60B1-4A1B-BD70-73B4E3309E52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DarkHelpers.Tests", "DarkHelpers.Tests\DarkHelpers.Tests.csproj", "{5A26E722-60B1-4A1B-BD70-73B4E3309E52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
