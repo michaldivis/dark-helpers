@@ -11,6 +11,7 @@ namespace Sample.WPF
         protected override void OnStartup(StartupEventArgs e)
         {
             InitializeFakeDiContainer();
+            SetDefaultWindowStyle();
 
             MainWindow = new HomeView(new HomeViewModel());
             MainWindow.Show();
@@ -28,6 +29,13 @@ namespace Sample.WPF
             nav.Register<HomeViewModel, HomeView>();
             nav.Register<ObservableCollectionViewModel, ObservableCollectionView>();
             return nav;
+        }
+
+        private void SetDefaultWindowStyle()
+        {
+            DarkWpfViewBase.WindowStyler = window => {
+                window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            };
         }
     }
 }

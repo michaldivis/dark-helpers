@@ -4,7 +4,17 @@ using System.Windows;
 
 namespace DarkHelpers.WPF
 {
-    public class DarkWpfViewBase<TViewModel> : Window where TViewModel : DarkViewModel
+    public abstract class DarkWpfViewBase : Window
+    {
+        public static Action<Window> WindowStyler = null;
+
+        public DarkWpfViewBase()
+        {
+            WindowStyler?.Invoke(this);
+        }
+    }
+
+    public class DarkWpfViewBase<TViewModel> : DarkWpfViewBase where TViewModel : DarkViewModel
     {
         private readonly TViewModel _viewModel;
 
