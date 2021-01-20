@@ -12,3 +12,5 @@ jobs:
       run: |
         dotnet restore
         dotnet test DarkHelpers.Tests/DarkHelpers.Tests.csproj
+        dotnet test DarkHelpers.XF.Tests/DarkHelpers.XF.Tests.csproj
+        dotnet test DarkHelpers.WPF.Tests/DarkHelpers.WPF.Tests.csproj
