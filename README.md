@@ -11,6 +11,11 @@ I've used the `ObservableObject`, `ObservableRangeCollection` and `ICommand` imp
 [![Nuget](https://img.shields.io/nuget/v/divis.darkhelpers.xf?label=DarkHelpers.XF)](https://www.nuget.org/packages/Divis.DarkHelpers.XF/)
 [![Nuget](https://img.shields.io/nuget/v/divis.darkhelpers.wpf?label=DarkHelpers.WPF)](https://www.nuget.org/packages/Divis.DarkHelpers.WPF/)
 
+## Packages
+- `DarkHelpers` - general package, includes all the interfaces and some implementations.
+- `DarkHelpers.XF` - platform specific implementations of base view and navigation service for Xamarin.Forms
+- `DarkHelpers.WPF` - platform specific implementations of base view and navigation service for WPF
+
 ## Features
 
 ### DarkObservableObject
