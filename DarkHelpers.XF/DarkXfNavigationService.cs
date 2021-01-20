@@ -28,7 +28,7 @@ namespace DarkHelpers.XF
         public async Task PushAsync<TViewModel>(TViewModel viewModel) where TViewModel : DarkViewModel
         {
             await viewModel.OnInitializeAsync();
-            var page = GetPageByViewModel(viewModel);
+            var page = GetViewByViewModel(viewModel);
             await _darkNavigationHandler.PushAsync(page as ContentPage);
         }
 

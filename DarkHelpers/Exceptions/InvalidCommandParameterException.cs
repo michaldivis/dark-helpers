@@ -8,7 +8,7 @@ namespace DarkHelpers.Exceptions
     public class InvalidCommandParameterException : Exception
 	{
 		/// <summary>
-		/// Initializes a new instance of the <see cref="T:MvvmHelpersInvalidCommandParameterException"/> class.
+		/// Initializes a new instance of the <see cref="InvalidCommandParameterException"/> class.
 		/// </summary>
 		/// <param name="expectedType">Expected parameter type for AsyncCommand.Execute.</param>
 		/// <param name="actualType">Actual parameter type for AsyncCommand.Execute.</param>
@@ -19,7 +19,7 @@ namespace DarkHelpers.Exceptions
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="T:TaskExtensions.MVVM.InvalidCommandParameterException"/> class.
+		/// Initializes a new instance of the <see cref="InvalidCommandParameterException"/> class.
 		/// </summary>
 		/// <param name="expectedType">Expected parameter type for AsyncCommand.Execute.</param>
 		/// <param name="innerException">Inner Exception</param>
@@ -29,7 +29,7 @@ namespace DarkHelpers.Exceptions
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="T:MvvmHelpers.InvalidCommandParameterException"/> class.
+		/// Initializes a new instance of the <see cref="InvalidCommandParameterException"/> class.
 		/// </summary>
 		/// <param name="expectedType">Expected parameter type for AsyncCommand.Execute.</param>
 		/// <param name="actualType">Actual parameter type for AsyncCommand.Execute.</param>
@@ -39,7 +39,7 @@ namespace DarkHelpers.Exceptions
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="T:TaskExtensions.MVVM.InvalidCommandParameterException"/> class.
+		/// Initializes a new instance of the <see cref="InvalidCommandParameterException"/> class.
 		/// </summary>
 		/// <param name="expectedType">Expected parameter type for AsyncCommand.Execute.</param>
 		public InvalidCommandParameterException(Type expectedType) : base(CreateErrorMessage(expectedType))
