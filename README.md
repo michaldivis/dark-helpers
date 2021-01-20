@@ -6,6 +6,10 @@ I wanted to create this library for my self, however, I'll be stoked if anyone e
 *Code & inspiration:
 I've used the `ObservableObject`, `ObservableRangeCollection` and `ICommand` implementations from [James Montemagno's MVVM-Helpers library](https://github.com/jamesmontemagno/mvvm-helpers), with some minor tweaks here and there. Thank you James!*
 
+Status:
+
+![Unit tests](https://github.com/michaldivis/DarkHelpers/workflows/Unit%20tests/badge.svg)
+
 ## Nuget
 [![Nuget](https://img.shields.io/nuget/v/divis.darkhelpers?label=DarkHelpers)](https://www.nuget.org/packages/Divis.DarkHelpers/)
 [![Nuget](https://img.shields.io/nuget/v/divis.darkhelpers.xf?label=DarkHelpers.XF)](https://www.nuget.org/packages/Divis.DarkHelpers.XF/)
