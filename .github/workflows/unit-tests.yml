@@ -1,8 +1,7 @@
 name: Unit tests
 
-on:
-  release:
-    types: [published, created, edited]
+on: 
+  workflow_dispatch
 
 jobs:
   Tests:
