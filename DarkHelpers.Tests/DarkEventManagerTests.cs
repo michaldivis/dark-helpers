@@ -1,5 +1,5 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
+using Xunit;
 
 namespace DarkHelpers.Tests
 {
@@ -49,44 +49,44 @@ namespace DarkHelpers.Tests
 		{
 			public void Subscribe(TestEventSource source) => source.TestEvent += SourceOnTestEvent;
 
-			void SourceOnTestEvent(object sender, EventArgs eventArgs) => Assert.Fail();
+			void SourceOnTestEvent(object sender, EventArgs eventArgs) => Assert.False(true); //fail test
 		}
 
-		[Test]
+		[Fact]
 		public void AddHandlerWithEmptyEventNameThrowsException()
 		{
 			var dem = new DarkEventManager();
-			Assert.Throws(typeof(ArgumentNullException), () => dem.AddEventHandler((sender, args) => { }, ""));
+			Assert.Throws<ArgumentNullException>(() => dem.AddEventHandler((sender, args) => { }, ""));
 		}
 
-		[Test]
+		[Fact]
 		public void AddHandlerWithNullEventHandlerThrowsException()
 		{
 			var dem = new DarkEventManager();
-			Assert.Throws(typeof(ArgumentNullException), () => dem.AddEventHandler(null, "test"));
+			Assert.Throws<ArgumentNullException>(() => dem.AddEventHandler(null, "test"));
 		}
 
-		[Test]
+		[Fact]
 		public void AddHandlerWithNullEventNameThrowsException()
 		{
 			var dem = new DarkEventManager();
-			Assert.Throws(typeof(ArgumentNullException), () => dem.AddEventHandler((sender, args) => { }, null));
+			Assert.Throws<ArgumentNullException>(() => dem.AddEventHandler((sender, args) => { }, null));
 		}
 
-		[Test]
+		[Fact]
 		public void CanRemoveEventHandler()
 		{
 			var source = new TestSource();
 			_ = source.Count;
 			source.Fire();
 
-			Assert.IsTrue(source.Count == 1);
+			Assert.True(source.Count == 1);
 			source.Clean();
 			source.Fire();
-			Assert.IsTrue(source.Count == 1);
+			Assert.True(source.Count == 1);
 		}
 
-		[Test]
+		[Fact]
 		public void CanRemoveStaticEventHandler()
 		{
 			var beforeRun = count;
@@ -97,10 +97,10 @@ namespace DarkHelpers.Tests
 
 			source.FireTestEvent();
 
-			Assert.IsTrue(count == beforeRun);
+			Assert.True(count == beforeRun);
 		}
 
-		[Test]
+		[Fact]
 		public void EventHandlerCalled()
 		{
 			var called = false;
@@ -110,17 +110,17 @@ namespace DarkHelpers.Tests
 
 			source.FireTestEvent();
 
-			Assert.IsTrue(called);
+			Assert.True(called);
 		}
 
-		[Test]
+		[Fact]
 		public void FiringEventWithoutHandlerShouldNotThrow()
 		{
 			var source = new TestEventSource();
 			source.FireTestEvent();
 		}
 
-		[Test]
+		[Fact]
 		public void MultipleHandlersCalled()
 		{
 			var called1 = false;
@@ -131,31 +131,31 @@ namespace DarkHelpers.Tests
 			source.TestEvent += (sender, args) => { called2 = true; };
 			source.FireTestEvent();
 
-			Assert.IsTrue(called1 && called2);
+			Assert.True(called1 && called2);
 		}
 
-		[Test]
+		[Fact]
 		public void RemoveHandlerWithEmptyEventNameThrowsException()
 		{
 			var dem = new DarkEventManager();
-			Assert.Throws(typeof(ArgumentNullException), () => dem.RemoveEventHandler((sender, args) => { }, ""));
+			Assert.Throws<ArgumentNullException>(() => dem.RemoveEventHandler((sender, args) => { }, ""));
 		}
 
-		[Test]
+		[Fact]
 		public void RemoveHandlerWithNullEventHandlerThrowsException()
 		{
 			var dem = new DarkEventManager();
-			Assert.Throws(typeof(ArgumentNullException), () => dem.RemoveEventHandler(null, "test"));
+			Assert.Throws<ArgumentNullException>(() => dem.RemoveEventHandler(null, "test"));
 		}
 
-		[Test]
+		[Fact]
 		public void RemoveHandlerWithNullEventNameThrowsException()
 		{
 			var dem = new DarkEventManager();
-			Assert.Throws(typeof(ArgumentNullException), () => dem.RemoveEventHandler((sender, args) => { }, null));
+			Assert.Throws<ArgumentNullException>(() => dem.RemoveEventHandler((sender, args) => { }, null));
 		}
 
-		[Test]
+		[Fact]
 		public void RemovingNonExistentHandlersShouldNotThrow()
 		{
 			var dem = new DarkEventManager();
@@ -163,7 +163,7 @@ namespace DarkHelpers.Tests
 			dem.RemoveEventHandler(Handler, "alsofake");
 		}
 
-		[Test]
+		[Fact]
 		public void RemoveHandlerWithMultipleSubscriptionsRemovesOne()
 		{
 			var beforeRun = count;
@@ -175,10 +175,10 @@ namespace DarkHelpers.Tests
 
 			source.FireTestEvent();
 
-			Assert.AreEqual(beforeRun + 1, count);
+			Assert.Equal(beforeRun + 1, count);
 		}
 
-		[Test]
+		[Fact]
 		public void StaticHandlerShouldRun()
 		{
 			var beforeRun = count;
@@ -188,10 +188,10 @@ namespace DarkHelpers.Tests
 
 			source.FireTestEvent();
 
-			Assert.IsTrue(count > beforeRun);
+			Assert.True(count > beforeRun);
 		}
 
-		[Test]
+		[Fact]
 		public void VerifySubscriberCanBeCollected()
 		{
 			WeakReference wr = null;
@@ -206,8 +206,8 @@ namespace DarkHelpers.Tests
 			GC.Collect();
 			GC.WaitForPendingFinalizers();
 
-			Assert.IsNotNull(wr);
-			Assert.IsFalse(wr.IsAlive);
+			Assert.NotNull(wr);
+			Assert.False(wr.IsAlive);
 
 			// The handler for this calls Assert.Fail, so if the subscriber has not been collected
 			// the handler will be called and the test will fail

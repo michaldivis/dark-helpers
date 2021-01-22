@@ -1,7 +1,7 @@
 ﻿using DarkHelpers.Navigation;
-using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using Xunit;
 
 namespace DarkHelpers.Tests.Navigation
 {
@@ -9,39 +9,38 @@ namespace DarkHelpers.Tests.Navigation
     {
         private TestableNav _nav;
 
-        [SetUp]
-        public void CreateNewNavInstance()
+        public DarkNavigationServiceBaseTests()
         {
             _nav = new TestableNav();
         }
 
-        [Test]
+        [Fact]
         public void GetViewByViewModel_ParameterNull_ThrowsException()
         {
             Assert.Throws<ArgumentNullException>(() => _nav.GetViewByViewModel<SomeViewModel>(null));
         }
 
-        [Test]
+        [Fact]
         public void GetViewByViewModel_NotRegistered_ThrowsException()
         {
             Assert.Throws<Exception>(() => _nav.GetViewByViewModel(new SomeViewModel()));
         }
 
-        [Test]
+        [Fact]
         public void GetViewByViewModel_ViewDoesntHaveCorrectCtor_ThrowsException()
         {
             _nav._registeredTypes.Add(typeof(SomeViewModel), typeof(WrongView));
             Assert.Throws<Exception>(() => _nav.GetViewByViewModel(new SomeViewModel()));
         }
 
-        [Test]
+        [Fact]
         public void GetViewByViewModel_RegisteredCorrectly_Passes()
         {
             _nav._registeredTypes.Add(typeof(SomeViewModel), typeof(SomeView));
             var view = _nav.GetViewByViewModel(new SomeViewModel());
         }
 
-        [Test]
+        [Fact]
         public void TryToCreateViewModel_HasDefaultConstructor_Passes()
         {
             var vm = _nav.TryToCreateViewModel<SomeViewModel>();

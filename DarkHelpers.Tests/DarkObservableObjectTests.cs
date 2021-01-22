@@ -1,7 +1,7 @@
 ﻿using DarkHelpers.Tests.TestModels;
-using NUnit.Framework;
 using System;
 using System.ComponentModel;
+using Xunit;
 
 namespace DarkHelpers.Tests
 {
@@ -9,8 +9,7 @@ namespace DarkHelpers.Tests
 	{
 		Item _item;
 
-		[SetUp]
-		public void Setup()
+		public DarkObservableObjectTests()
 		{
             _item = new Item
             {
@@ -19,7 +18,7 @@ namespace DarkHelpers.Tests
             };
         }
 
-		[Test]
+		[Fact]
 		public void OnPropertyChanged()
 		{
 			PropertyChangedEventArgs updated = null;
@@ -30,11 +29,11 @@ namespace DarkHelpers.Tests
 
 			_item.Name = "Hammer";
 
-			Assert.IsNotNull(updated, "Property changed didn't raise");
-			Assert.AreEqual(updated.PropertyName, nameof(_item.Name), "Correct Property name didn't get raised");
+			Assert.NotNull(updated);
+			Assert.Equal(nameof(_item.Name), updated.PropertyName);
 		}
 
-		[Test]
+		[Fact]
 		public void OnDidntChange()
 		{
 			_item.Name = "Hammer";
@@ -47,10 +46,10 @@ namespace DarkHelpers.Tests
 
 			_item.Name = "Hammer";
 
-			Assert.IsNull(updated, "Property changed was raised, but shouldn't have been");
+			Assert.Null(updated);
 		}
 
-		[Test]
+		[Fact]
 		public void OnChangedEvent()
 		{
 			var triggered = false;
@@ -61,10 +60,10 @@ namespace DarkHelpers.Tests
 
 			_item.Name = "Cloth";
 
-			Assert.IsTrue(triggered, "OnChanged didn't raise");
+			Assert.True(triggered);
 		}
 
-		[Test]
+		[Fact]
 		public void ValidateEvent()
 		{
 			var contol = "Mammoth";
@@ -77,15 +76,15 @@ namespace DarkHelpers.Tests
 
 			_item.Name = contol;
 
-			Assert.IsTrue(triggered, "ValidateValue didn't raise");
-			Assert.AreEqual(_item.Name, contol, "Value was not set correctly.");
+			Assert.True(triggered);
+			Assert.Equal(_item.Name, contol);
 
 		}
 
-		[Test]
+		[Fact]
 		public void NotValidateEvent()
 		{
-			var contol = _item.Name;
+			var control = _item.Name;
 			var triggered = false;
 			_item.Validate = (oldValue, newValue) =>
 			{
@@ -95,12 +94,12 @@ namespace DarkHelpers.Tests
 
 			_item.Name = "Merrow";
 
-			Assert.IsTrue(triggered, "ValidateValue didn't raise");
-			Assert.AreEqual(_item.Name, contol, "Value should not have been set.");
+			Assert.True(triggered);
+			Assert.Equal(_item.Name, control);
 
 		}
 
-		[Test]
+		[Fact]
 		public void ValidateEventException()
 		{
 			_item.Validate = (oldValue, newValue) =>
@@ -108,7 +107,7 @@ namespace DarkHelpers.Tests
 				throw new ArgumentOutOfRangeException();
 			};
 
-			Assert.Throws(typeof(ArgumentOutOfRangeException), () => _item.Name = "Horse", "Should throw ArgumentOutOfRangeException");
+			Assert.Throws<ArgumentOutOfRangeException>(() => _item.Name = "Horse");
 		}
 	}
 }

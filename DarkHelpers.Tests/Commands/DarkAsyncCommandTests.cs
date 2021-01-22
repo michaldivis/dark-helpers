@@ -1,8 +1,8 @@
 ﻿using DarkHelpers.Commands;
-using NUnit.Framework;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xunit;
 
 namespace DarkHelpers.Tests.Commands
 {
@@ -88,14 +88,14 @@ namespace DarkHelpers.Tests.Commands
 
         #endregion
 
-        [Test]
+        [Fact]
 		public void AsyncCommand_UsingICommand()
 		{
 			//Arrange
 			RefreshCommand.Execute(true);
 		}
 
-		[Test]
+		[Fact]
 		public void AsyncCommand_NullExecuteParameter()
 		{
 			//Arrange
@@ -103,10 +103,10 @@ namespace DarkHelpers.Tests.Commands
 			//Act
 
 			//Assert
-			Assert.Throws(typeof(ArgumentNullException), () => new DarkAsyncCommand(null));
+			Assert.Throws<ArgumentNullException>(() => new DarkAsyncCommand(null));
 		}
 
-		[Test]
+		[Fact]
 		public void AsyncCommandT_NullExecuteParameter()
 		{
 			//Arrange
@@ -114,10 +114,10 @@ namespace DarkHelpers.Tests.Commands
 			//Act
 
 			//Assert
-			Assert.Throws(typeof(ArgumentNullException), () => new DarkAsyncCommand<object>(null));
+			Assert.Throws<ArgumentNullException>(() => new DarkAsyncCommand<object>(null));
 		}
 
-		[Test]
+		[Fact]
 		public async Task AsyncCommand_ExecuteAsync_IntParameter_Test()
 		{
 			//Arrange
@@ -130,7 +130,7 @@ namespace DarkHelpers.Tests.Commands
 			//Assert
 		}
 
-		[Test]
+		[Fact]
 		public async Task AsyncCommand_ExecuteAsync_StringParameter_Test()
 		{
 			//Arrange
@@ -144,7 +144,7 @@ namespace DarkHelpers.Tests.Commands
 
 		}
 
-		[Test]
+		[Fact]
 		public void AsyncCommand_Parameter_CanExecuteTrue_Test()
 		{
 			//Arrange
@@ -153,10 +153,10 @@ namespace DarkHelpers.Tests.Commands
 			//Act
 
 			//Assert
-			Assert.IsTrue(command.CanExecute(null));
+			Assert.True(command.CanExecute(null));
 		}
 
-		[Test]
+		[Fact]
 		public void AsyncCommand_Parameter_CanExecuteFalse_Test()
 		{
 			//Arrange
@@ -165,10 +165,10 @@ namespace DarkHelpers.Tests.Commands
 			//Act
 
 			//Assert
-			Assert.IsFalse(command.CanExecute(null));
+			Assert.False(command.CanExecute(null));
 		}
 
-		[Test]
+		[Fact]
 		public void AsyncCommand_NoParameter_CanExecuteTrue_Test()
 		{
 			//Arrange
@@ -177,10 +177,10 @@ namespace DarkHelpers.Tests.Commands
 			//Act
 
 			//Assert
-			Assert.IsTrue(command.CanExecute(null));
+			Assert.True(command.CanExecute(null));
 		}
 
-		[Test]
+		[Fact]
 		public void AsyncCommand_NoParameter_CanExecuteFalse_Test()
 		{
 			//Arrange
@@ -189,11 +189,11 @@ namespace DarkHelpers.Tests.Commands
 			//Act
 
 			//Assert
-			Assert.IsFalse(command.CanExecute(null));
+			Assert.False(command.CanExecute(null));
 		}
 
 
-		[Test]
+		[Fact]
 		public void AsyncCommand_CanExecuteChanged_Test()
 		{
 			//Arrange
@@ -213,21 +213,21 @@ namespace DarkHelpers.Tests.Commands
                 return canCommandExecute;
             }
 
-            Assert.IsFalse(command.CanExecute(null));
+            Assert.False(command.CanExecute(null));
 
 			//Act
 			canCommandExecute = true;
 
 			//Assert
-			Assert.IsTrue(command.CanExecute(null));
-			Assert.IsFalse(didCanExecuteChangeFire);
+			Assert.True(command.CanExecute(null));
+			Assert.False(didCanExecuteChangeFire);
 
 			//Act
 			command.RaiseCanExecuteChanged();
 
 			//Assert
-			Assert.IsTrue(didCanExecuteChangeFire);
-			Assert.IsTrue(command.CanExecute(null));
+			Assert.True(didCanExecuteChangeFire);
+			Assert.True(command.CanExecute(null));
 		}
 	}
 }

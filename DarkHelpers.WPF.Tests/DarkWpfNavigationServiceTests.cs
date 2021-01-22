@@ -1,5 +1,5 @@
 using DarkHelpers.WPF.Tests.HelperModels;
-using NUnit.Framework;
+using Xunit;
 
 namespace DarkHelpers.WPF.Tests
 {
@@ -7,13 +7,12 @@ namespace DarkHelpers.WPF.Tests
     {
         private DarkWpfNavigationService _nav;
 
-        [SetUp]
-        public void CreateNavInstance()
+        public DarkWpfNavigationServiceTests()
         {
             _nav = new DarkWpfNavigationService();
         }
 
-        [Test]
+        [Fact]
         public void Register_ArgumentsCorrect_Passes()
         {
             _nav.Register<SomeViewModel, SomeView>();

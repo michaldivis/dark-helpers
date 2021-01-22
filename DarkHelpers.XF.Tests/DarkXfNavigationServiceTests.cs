@@ -1,5 +1,5 @@
 ﻿using DarkHelpers.XF.Tests.HelperModels;
-using NUnit.Framework;
+using Xunit;
 
 namespace DarkHelpers.XF.Tests
 {
@@ -7,13 +7,12 @@ namespace DarkHelpers.XF.Tests
     {
         private DarkXfNavigationService _nav;
 
-        [SetUp]
-        public void CreateNavInstance()
+        public DarkXfNavigationServiceTests()
         {
             _nav = new DarkXfNavigationService();
         }
 
-        [Test]
+        [Fact]
         public void Register_ArgumentsCorrect_Passes()
         {
             _nav.Register<SomeViewModel, SomeView>();

@@ -1,48 +1,48 @@
 ﻿using DarkHelpers.Commands;
 using DarkHelpers.Exceptions;
-using NUnit.Framework;
 using System;
+using Xunit;
 
 namespace DarkHelpers.Tests.Commands
 {
     public class DarkCommandTests
     {
-		[Test]
+		[Fact]
 		public void Constructor()
 		{
 			var cmd = new DarkCommand(() => { });
-			Assert.IsTrue(cmd.CanExecute(null));
+			Assert.True(cmd.CanExecute(null));
 		}
 
-		[Test]
+		[Fact]
 		public void ThrowsWithNullConstructor()
 		{
-			Assert.Throws(typeof(ArgumentNullException), () => new DarkCommand((Action)null));
+			Assert.Throws<ArgumentNullException>(() => new DarkCommand((Action)null));
 		}
 
-		[Test]
+		[Fact]
 		public void ThrowsWithNullParameterizedConstructor()
 		{
-			Assert.Throws(typeof(ArgumentNullException), () => new DarkCommand((Action<object>)null));
+			Assert.Throws<ArgumentNullException>(() => new DarkCommand((Action<object>)null));
 		}
 
-		[Test]
+		[Fact]
 		public void ThrowsWithNullExecuteValidCanExecute()
 		{
-			Assert.Throws(typeof(ArgumentNullException), () => new DarkCommand(null, () => true));
+			Assert.Throws<ArgumentNullException>(() => new DarkCommand(null, () => true));
 		}
 
-		[Test]
+		[Fact]
 		public void Execute()
 		{
 			var executed = false;
 			var cmd = new DarkCommand(() => executed = true);
 
 			cmd.Execute(null);
-			Assert.IsTrue(executed);
+			Assert.True(executed);
 		}
 
-		[Test]
+		[Fact]
 		public void ExecuteParameterized()
 		{
 			object executed = null;
@@ -51,20 +51,20 @@ namespace DarkHelpers.Tests.Commands
 			var expected = new object();
 			cmd.Execute(expected);
 
-			Assert.AreEqual(expected, executed);
+			Assert.Equal(expected, executed);
 		}
 
-		[Test]
+		[Fact]
 		public void ExecuteWithCanExecute()
 		{
 			var executed = false;
 			var cmd = new DarkCommand(() => executed = true, () => true);
 
 			cmd.Execute(null);
-			Assert.IsTrue(executed);
+			Assert.True(executed);
 		}
 
-		[Test]
+		[Fact]
 		public void CanExecute()
 		{
 			var canExecuteRan = false;
@@ -74,11 +74,11 @@ namespace DarkHelpers.Tests.Commands
 				return true;
 			});
 
-			Assert.AreEqual(true, cmd.CanExecute(null));
-			Assert.IsTrue(canExecuteRan);
+			Assert.True(cmd.CanExecute(null));
+			Assert.True(canExecuteRan);
 		}
 
-		[Test]
+		[Fact]
 		public void ChangeCanExecute()
 		{
 			var signaled = false;
@@ -87,48 +87,48 @@ namespace DarkHelpers.Tests.Commands
 			cmd.CanExecuteChanged += (sender, args) => signaled = true;
 
 			cmd.RaiseCanExecuteChanged();
-			Assert.IsTrue(signaled);
+			Assert.True(signaled);
 		}
 
-		[Test]
+		[Fact]
 		public void GenericThrowsWithNullExecute()
 		{
-			Assert.Throws(typeof(ArgumentNullException), () => new DarkCommand<string>(null));
+			Assert.Throws<ArgumentNullException>(() => new DarkCommand<string>(null));
 		}
 
-		[Test]
+		[Fact]
 		public void GenericThrowsWithNullExecuteAndCanExecuteValid()
 		{
-			Assert.Throws(typeof(ArgumentNullException), () => new DarkCommand<string>(null, s => true));
+			Assert.Throws<ArgumentNullException>(() => new DarkCommand<string>(null, s => true));
 		}
 
-		[Test]
+		[Fact]
 		public void GenericThrowsWithValidExecuteAndCanExecuteNull()
 		{
-			Assert.Throws(typeof(ArgumentNullException), () => new DarkCommand<string>(s => { }, null));
+			Assert.Throws<ArgumentNullException>(() => new DarkCommand<string>(s => { }, null));
 		}
 
-		[Test]
+		[Fact]
 		public void GenericExecute()
 		{
 			string result = null;
 			var cmd = new DarkCommand<string>(s => result = s);
 
 			cmd.Execute("Foo");
-			Assert.AreEqual("Foo", result);
+			Assert.Equal("Foo", result);
 		}
 
-		[Test]
+		[Fact]
 		public void GenericExecuteWithCanExecute()
 		{
 			string result = null;
 			var cmd = new DarkCommand<string>(s => result = s, s => true);
 
 			cmd.Execute("Foo");
-			Assert.AreEqual("Foo", result);
+			Assert.Equal("Foo", result);
 		}
 
-		[Test]
+		[Fact]
 		public void GenericCanExecute()
 		{
 			string result = null;
@@ -138,8 +138,8 @@ namespace DarkHelpers.Tests.Commands
 				return true;
 			});
 
-			Assert.AreEqual(true, cmd.CanExecute("Foo"));
-			Assert.AreEqual("Foo", result);
+			Assert.True(cmd.CanExecute("Foo"));
+			Assert.Equal("Foo", result);
 		}
 
 		class FakeParentContext
@@ -150,89 +150,89 @@ namespace DarkHelpers.Tests.Commands
 		{
 		}
 
-		[Test]
+		[Fact]
 		public void CanExecuteReturnsFalseIfParameterIsWrongReferenceType()
 		{
 			var command = new DarkCommand<FakeChildContext>(context => { }, context => true);
 
-			Assert.Throws(typeof(InvalidCommandParameterException), () => command.CanExecute(new FakeParentContext()));
+			Assert.Throws<InvalidCommandParameterException>(() => command.CanExecute(new FakeParentContext()));
 		}
 
-		[Test]
+		[Fact]
 		public void CanExecuteReturnsFalseIfParameterIsWrongValueType()
 		{
 			var command = new DarkCommand<int>(context => { }, context => true);
 
-			Assert.Throws(typeof(InvalidCommandParameterException), () => command.CanExecute(10.5));
+			Assert.Throws<InvalidCommandParameterException>(() => command.CanExecute(10.5));
 		}
 
-		[Test]
+		[Fact]
 		public void CanExecuteUsesParameterIfReferenceTypeAndSetToNull()
 		{
 			var command = new DarkCommand<FakeChildContext>(context => { }, context => true);
 
-			Assert.IsTrue(command.CanExecute(null), "null is a valid value for a reference type");
+			Assert.True(command.CanExecute(null), "null is a valid value for a reference type");
 		}
 
-		[Test]
+		[Fact]
 		public void CanExecuteUsesParameterIfNullableAndSetToNull()
 		{
 			var command = new DarkCommand<int?>(context => { }, context => true);
 
-			Assert.IsTrue(command.CanExecute(null), "null is a valid value for a Nullable<int> type");
+			Assert.True(command.CanExecute(null), "null is a valid value for a Nullable<int> type");
 		}
 
-		[Test]
+		[Fact]
 		public void CanExecuteIgnoresParameterIfValueTypeAndSetToNull()
 		{
 			var command = new DarkCommand<int>(context => { }, context => true);
 
-			Assert.Throws(typeof(InvalidCommandParameterException), () => command.CanExecute(null));
+			Assert.Throws<InvalidCommandParameterException>(() => command.CanExecute(null));
 		}
 
-		[Test]
+		[Fact]
 		public void ExecuteDoesNotRunIfParameterIsWrongReferenceType()
 		{
 			var executions = 0;
 			var command = new DarkCommand<FakeChildContext>(context => executions += 1);
 
-			Assert.IsTrue(executions == 0, "the command should not have executed");
+			Assert.True(executions == 0, "the command should not have executed");
 		}
 
-		[Test]
+		[Fact]
 		public void ExecuteDoesNotRunIfParameterIsWrongValueType()
 		{
 			var executions = 0;
 			var command = new DarkCommand<int>(context => executions += 1);
 
-			Assert.IsTrue(executions == 0, "the command should not have executed");
+			Assert.True(executions == 0, "the command should not have executed");
 		}
 
-		[Test]
+		[Fact]
 		public void ExecuteRunsIfReferenceTypeAndSetToNull()
 		{
 			var executions = 0;
 			var command = new DarkCommand<FakeChildContext>(context => executions += 1);
 			command.Execute(null);
-			Assert.IsTrue(executions == 1, "the command should have executed");
+			Assert.True(executions == 1, "the command should have executed");
 		}
 
-		[Test]
+		[Fact]
 		public void ExecuteRunsIfNullableAndSetToNull()
 		{
 			var executions = 0;
 			var command = new DarkCommand<int?>(context => executions += 1);
 			command.Execute(null);
-			Assert.IsTrue(executions == 1, "the command should have executed");
+			Assert.True(executions == 1, "the command should have executed");
 		}
 
-		[Test]
+		[Fact]
 		public void ExecuteDoesNotRunIfValueTypeAndSetToNull()
 		{
 			var executions = 0;
 			var command = new DarkCommand<int>(context => executions += 1);
 
-			Assert.IsTrue(executions == 0, "the command should not have executed");
+			Assert.True(executions == 0, "the command should not have executed");
 		}
 	}
 }

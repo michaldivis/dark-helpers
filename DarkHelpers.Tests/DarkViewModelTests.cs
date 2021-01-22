@@ -1,11 +1,11 @@
-﻿using NUnit.Framework;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using Xunit;
 
 namespace DarkHelpers.Tests
 {
     public class DarkViewModelTests
     {
-		[Test]
+		[Fact]
 		public void CanLoadMore()
 		{
 			PropertyChangedEventArgs updated = null;
@@ -17,11 +17,11 @@ namespace DarkHelpers.Tests
 			};
 
 			vm.CanLoadMore = false;
-			Assert.IsNotNull(updated, "Property changed didn't raise");
-			Assert.AreEqual(updated.PropertyName, nameof(vm.CanLoadMore), "Correct Property name didn't get raised");
+			Assert.NotNull(updated);
+			Assert.Equal(nameof(vm.CanLoadMore), updated.PropertyName);
 		}
 
-		[Test]
+		[Fact]
 		public void IsLoadingMore()
 		{
 			PropertyChangedEventArgs updated = null;
@@ -33,11 +33,11 @@ namespace DarkHelpers.Tests
 			};
 
 			vm.IsLoadingMore = false;
-			Assert.IsNotNull(updated, "Property changed didn't raise");
-			Assert.AreEqual(updated.PropertyName, nameof(vm.IsLoadingMore), "Correct Property name didn't get raised");
+			Assert.NotNull(updated);
+			Assert.Equal(nameof(vm.IsLoadingMore), updated.PropertyName);
 		}
 
-		[Test]
+		[Fact]
 		public void IsBusy()
 		{
 			PropertyChangedEventArgs updated = null;
@@ -52,13 +52,12 @@ namespace DarkHelpers.Tests
             };
 
 			vm.IsBusy = true;
-			Assert.IsNotNull(updated, "Property changed didn't raise");
-			Assert.AreEqual(updated.PropertyName, nameof(vm.IsBusy), "Correct Property name didn't get raised");
-
-			Assert.IsFalse(vm.IsNotBusy, "Is Not Busy didn't change.");
+			Assert.NotNull(updated);
+			Assert.Equal(nameof(vm.IsBusy), updated.PropertyName);
+			Assert.False(vm.IsNotBusy);
 		}
 
-		[Test]
+		[Fact]
 		public void IsNotBusy()
 		{
 			PropertyChangedEventArgs updated = null;
@@ -73,10 +72,10 @@ namespace DarkHelpers.Tests
             };
 
 			vm.IsNotBusy = false;
-			Assert.IsNotNull(updated, "Property changed didn't raise");
-			Assert.AreEqual(updated.PropertyName, nameof(vm.IsNotBusy), "Correct Property name didn't get raised");
 
-			Assert.IsTrue(vm.IsBusy, "Is Busy didn't change.");
+			Assert.NotNull(updated);
+			Assert.Equal(nameof(vm.IsNotBusy), updated.PropertyName);
+			Assert.True(vm.IsBusy);
 		}
 	}
 }
