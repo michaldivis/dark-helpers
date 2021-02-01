@@ -72,7 +72,7 @@ A ObservableCollection that adds important methods such as: AddRange, RemoveRang
 Navigate freely, even from a class library where you might be storing your view models.
 
 It works like this:
-- register the ViewModel & View pairs to the instance of the platform specific nagivation service (`DarkXfNavigationService` for Xamarin.Forms and `DarkWpfNavigationService` for WPF)
+- register the ViewModel & View pairs to the instance of the platform specific nagivation service (`DarkXfNavigationService` for Xamarin.Forms and `DarkWpfNavigationService` for WPF). The view model has to implement the `DarkViewModel` class and the view has to implement the specific view base class (`DarkWpfViewBase` for WPF and `DarkXfViewBase` class for Xamarin.Forms). More on that in the "Custom base view" section
 - store the platform specific implementation as an instance of `IDarkNavigationService` in a DI container (or wherever)
 - only use the `IDarkNavigationService` instance to perform navigation 
 
