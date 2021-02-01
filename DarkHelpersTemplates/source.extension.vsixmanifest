@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" ?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="DarkHelpersTemplates.5ccad15f-061c-4e35-8e09-1d4e45585e94" Version="1.0" Language="en-US" Publisher="Michal Diviš" />
+        <Identity Id="DarkHelpersTemplates.5ccad15f-061c-4e35-8e09-1d4e45585e94" Version="1.0.1" Language="en-US" Publisher="Michal Diviš" />
         <DisplayName>DarkHelpersTemplates</DisplayName>
         <Description xml:space="preserve">DarkHelpers view templates for WPF and Xamarin.Forms.</Description>
         <MoreInfo>https://github.com/michaldivis/DarkHelpers</MoreInfo>
@@ -13,6 +13,8 @@
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[16.0, 17.0)" />
+        <InstallationTarget Version="[16.0,17.0)" Id="Microsoft.VisualStudio.Pro" />
+        <InstallationTarget Version="[16.0,17.0)" Id="Microsoft.VisualStudio.Enterprise" />
     </Installation>
     <Dependencies>
         <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
