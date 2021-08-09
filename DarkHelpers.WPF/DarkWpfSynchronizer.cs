@@ -4,7 +4,7 @@ using System.Windows.Data;
 
 namespace DarkHelpers.WPF
 {
-    public class WpfDarkObservableCollectionSynchronizer : IDarkObservableCollectionSynchronizer
+    public class DarkWpfSynchronizer : IDarkObservableCollectionSynchronizer
     {
         public void EnableSynchronization(IDarkObservableCollection collection)
         {

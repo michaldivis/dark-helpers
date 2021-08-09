@@ -1,12 +1,15 @@
-﻿namespace DarkHelpers.Collections
+﻿using System;
+
+namespace DarkHelpers.Collections
 {
     public static class DarkObservableCollectionSettings
     {
         private static IDarkObservableCollectionSynchronizer _synchronizer;
 
-        public static void RegisterSynchronizer(IDarkObservableCollectionSynchronizer synchronizer)
+        public static void RegisterSynchronizer<TSynchronizer>() where TSynchronizer : IDarkObservableCollectionSynchronizer, new()
         {
-            _synchronizer = synchronizer;
+            var instance = Activator.CreateInstance<TSynchronizer>();
+            _synchronizer = instance;
         }
 
         internal static IDarkObservableCollectionSynchronizer GetSynchronizer()

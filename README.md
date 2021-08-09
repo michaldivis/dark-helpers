@@ -86,7 +86,7 @@ using DarkHelpers.Collections;
 
 protected override void OnStartup(StartupEventArgs e)
 {
-    DarkObservableCollectionSettings.RegisterSynchronizer(new WpfDarkObservableCollectionSynchronizer());
+    DarkObservableCollectionSettings.RegisterSynchronizer<DarkWpfSynchronizer>();
 
     //other code
 }
@@ -98,7 +98,7 @@ using DarkHelpers.Collections;
 
  public App()
 {
-    DarkObservableCollectionSettings.RegisterSynchronizer(new XamarinFormsDarkObservableCollectionSynchronizer());
+    DarkObservableCollectionSettings.RegisterSynchronizer<DarkXfSynchronizer>();
 
     //other code
 }

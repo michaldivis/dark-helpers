@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace DarkHelpers.XF
 {
-    public class XamarinFormsDarkObservableCollectionSynchronizer : IDarkObservableCollectionSynchronizer
+    public class DarkXfSynchronizer : IDarkObservableCollectionSynchronizer
     {
         public void EnableSynchronization(IDarkObservableCollection collection)
         {

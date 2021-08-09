@@ -14,7 +14,7 @@ namespace Sample.XF
         {
             InitializeComponent();
 
-            DarkObservableCollectionSettings.RegisterSynchronizer(new XamarinFormsDarkObservableCollectionSynchronizer());
+            DarkObservableCollectionSettings.RegisterSynchronizer<DarkXfSynchronizer>();
 
             InitializeFakeDiContainer();
 

@@ -15,7 +15,7 @@ namespace Sample.WPF
             InitializeFakeDiContainer();
             SetDefaultWindowStyle();
 
-            DarkObservableCollectionSettings.RegisterSynchronizer(new WpfDarkObservableCollectionSynchronizer());
+            DarkObservableCollectionSettings.RegisterSynchronizer<DarkWpfSynchronizer>();
 
             MainWindow = new HomeView(new HomeViewModel());
             MainWindow.Show();
