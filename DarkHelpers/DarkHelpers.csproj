@@ -13,7 +13,7 @@
     <PackageId>Divis.DarkHelpers</PackageId>
     <PackageTags>mvvm, xamarin.forms, wpf, command, observablecollection, navigation service</PackageTags>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <Version>0.1.3</Version>
+    <Version>0.1.4</Version>
   </PropertyGroup>
 
   <ItemGroup>
