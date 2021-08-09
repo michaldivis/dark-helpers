@@ -153,3 +153,91 @@ await nav.PopAsync();
 ### DarkAsyncCommand, DarkCommand, and DarkEventManager
 
 Synchronous and asynchronous ICommand implementations, plus a DarkEventManager to help your events be garbage collection safe
+
+### Custom base view
+
+Custom base view that allows the navigation by view model.
+
+*NOTE: you can now use my Visual Studio extension that contains view templates for both WPF and Xamarin.Forms for easier view creation. The extension can be found [HERE](https://marketplace.visualstudio.com/items?itemName=michaldivis.DarkHelpersTemplates)*
+
+#### Creating a WPF view
+
+Create a new `Window` and change the code to look like this.
+
+*I'm using the SomeApp as my example project namespace*
+
+SomeView.xaml
+```xaml
+<darkViews:DarkWpfViewBase
+    x:Class="SomeApp.Views.SomeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:darkViews="clr-namespace:DarkHelpers.WPF;assembly=DarkHelpers.WPF"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:SomeApp.ViewModels;assembly=SomeApp"
+    Title="SomeView"
+    x:TypeArguments="viewModels:SomeViewModel"
+    mc:Ignorable="d">
+    <Grid />
+</darkViews:DarkWpfViewBase>
+```
+
+SomeView.xaml.cs
+```csharp
+using DarkHelpers.WPF;
+using SomeApp.ViewModels;
+
+namespace SomeApp.Views
+{
+    public partial class SomeView : DarkWpfViewBase<SomeViewModel>
+    {
+        public HomeView(SomeViewModel vm) : base(vm)
+        {
+            InitializeComponent();
+        }
+    }
+}
+```
+
+#### Creating a Xamarin.Forms view
+
+Create a new `ContentPage` and change the code to look like this.
+
+*I'm using the SomeApp as my example project namespace*
+
+SomeView.xaml
+```xaml
+<?xml version="1.0" encoding="utf-8" ?>
+<darkViews:DarkXfViewBase
+    x:Class="SomeApp.Views.SomeView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:darkViews="clr-namespace:DarkHelpers.XF;assembly=DarkHelpers.XF"
+    xmlns:viewModels="clr-namespace:SomeApp.ViewModels;assembly=SomeApp"
+    Title="Home"
+    x:TypeArguments="viewModels:SomeViewModel">
+    <ContentPage.Content>
+        <Grid />
+    </ContentPage.Content>
+</darkViews:DarkXfViewBase>
+```
+
+SomeView.xaml.cs
+```csharp
+using DarkHelpers.XF;
+using SomeApp.ViewModels;
+using Xamarin.Forms.Xaml;
+
+namespace SomeApp.Views
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class SomeView : DarkXfViewBase<SomeViewModel>
+    {
+        public HomeView(SomeViewModel vm) : base(vm)
+        {
+            InitializeComponent();
+        }
+    }
+}
+```
