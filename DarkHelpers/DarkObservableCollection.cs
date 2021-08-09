@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DarkHelpers.Collections;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -10,15 +11,15 @@ namespace DarkHelpers
 	/// Represents a dynamic data collection that provides notifications when items get added, removed, or when the whole list is refreshed. 
 	/// </summary> 
 	/// <typeparam name="T"></typeparam> 
-	public class DarkObservableCollection<T> : ObservableCollection<T>
+	public class DarkObservableCollection<T> : ObservableCollection<T>, IDarkObservableCollection
 	{
-
 		/// <summary> 
 		/// Initializes a new instance of the System.Collections.ObjectModel.ObservableCollection(Of T) class. 
 		/// </summary> 
 		public DarkObservableCollection()
 			: base()
 		{
+			DarkObservableCollectionSettings.GetSynchronizer().EnableSynchronization(this);
 		}
 
 		/// <summary> 
@@ -29,12 +30,33 @@ namespace DarkHelpers
 		public DarkObservableCollection(IEnumerable<T> collection)
 			: base(collection)
 		{
+			DarkObservableCollectionSettings.GetSynchronizer().EnableSynchronization(this);
+		}
+
+		public new void Clear()
+		{
+			DarkObservableCollectionSettings.GetSynchronizer().HandleAction(base.Clear);
+		}
+
+		public new void Add(T item)
+        {
+			DarkObservableCollectionSettings.GetSynchronizer().HandleAction(() => base.Add(item));
+        }
+
+		public new void Remove(T item)
+		{
+			DarkObservableCollectionSettings.GetSynchronizer().HandleAction(() => base.Remove(item));
 		}
 
 		/// <summary> 
 		/// Adds the elements of the specified collection to the end of the ObservableCollection(Of T). 
 		/// </summary> 
 		public void AddRange(IEnumerable<T> collection, NotifyCollectionChangedAction notificationMode = NotifyCollectionChangedAction.Add)
+		{
+			DarkObservableCollectionSettings.GetSynchronizer().HandleAction(() => AddRangeInternal(collection, notificationMode));
+		}
+		
+		public void AddRangeInternal(IEnumerable<T> collection, NotifyCollectionChangedAction notificationMode = NotifyCollectionChangedAction.Add)
 		{
 			if (notificationMode != NotifyCollectionChangedAction.Add && notificationMode != NotifyCollectionChangedAction.Reset)
 				throw new ArgumentException("Mode must be either Add or Reset for AddRange.", nameof(notificationMode));
@@ -69,6 +91,11 @@ namespace DarkHelpers
 		/// Removes the first occurence of each item in the specified collection from ObservableCollection(Of T). NOTE: with notificationMode = Remove, removed items starting index is not set because items are not guaranteed to be consecutive.
 		/// </summary> 
 		public void RemoveRange(IEnumerable<T> collection, NotifyCollectionChangedAction notificationMode = NotifyCollectionChangedAction.Reset)
+		{
+			DarkObservableCollectionSettings.GetSynchronizer().HandleAction(() => RemoveRangeInternal(collection, notificationMode));
+		}
+		
+		public void RemoveRangeInternal(IEnumerable<T> collection, NotifyCollectionChangedAction notificationMode = NotifyCollectionChangedAction.Reset)
 		{
 			if (notificationMode != NotifyCollectionChangedAction.Remove && notificationMode != NotifyCollectionChangedAction.Reset)
 				throw new ArgumentException("Mode must be either Remove or Reset for RemoveRange.", nameof(notificationMode));
@@ -119,6 +146,11 @@ namespace DarkHelpers
 		/// Clears the current collection and replaces it with the specified collection. 
 		/// </summary> 
 		public void ReplaceRange(IEnumerable<T> collection)
+		{
+			DarkObservableCollectionSettings.GetSynchronizer().HandleAction(() => ReplaceRangeInternal(collection));
+		}
+		
+		public void ReplaceRangeInternal(IEnumerable<T> collection)
 		{
 			if (collection == null)
 				throw new ArgumentNullException(nameof(collection));
