@@ -68,6 +68,42 @@ Event support:
 ### DarkObservableCollection
 A ObservableCollection that adds important methods such as: AddRange, RemoveRange, Replace, and ReplaceRange.
 
+```csharp
+public DarkObservableCollection<Item> Items { get; set; } = new DarkObservableCollection<Item>();
+
+private void ReloadItems(){
+    var items = _dataService.GetItems();
+    Items.ReplaceRange(items);
+}
+```
+
+#### Enable synchronization
+Collection synchronization can be enabled using the static `DarkObservableCollectionSettings` class. Since collection synchronization is implemented differently for WPF and Xamarin.Forms, the initialization differs a bit.
+
+WPF (App.xaml.cs)
+```csharp
+using DarkHelpers.Collections;
+
+protected override void OnStartup(StartupEventArgs e)
+{
+    DarkObservableCollectionSettings.RegisterSynchronizer(new WpfDarkObservableCollectionSynchronizer());
+
+    //other code
+}
+```
+
+Xamarin.Forms (App.xaml.cs)
+```csharp
+using DarkHelpers.Collections;
+
+ public App()
+{
+    DarkObservableCollectionSettings.RegisterSynchronizer(new XamarinFormsDarkObservableCollectionSynchronizer());
+
+    //other code
+}
+```
+
 ### IDarkNavigationService
 Navigate freely, even from a class library where you might be storing your view models.
 
