@@ -10,58 +10,76 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="10" Spacing="10">
-                <Button
-                    Margin="5"
-                    Command="{Binding ClearCommand}"
-                    IsEnabled="{Binding IsNotBusy}"
-                    Text="Clear items" />
-                <Button
-                    Margin="5"
-                    Command="{Binding AddItemCommand}"
-                    IsEnabled="{Binding IsNotBusy}"
-                    Text="Add an item" />
-                <Button
-                    Margin="5"
-                    Command="{Binding AddItemsCommand}"
-                    IsEnabled="{Binding IsNotBusy}"
-                    Text="Add 5 items" />
-                <Button
-                    Margin="5"
-                    Command="{Binding ReplaceWithItemCommand}"
-                    IsEnabled="{Binding IsNotBusy}"
-                    Text="Replace with an item" />
-                <Button
-                    Margin="5"
-                    Command="{Binding ReplaceWithItemsCommand}"
-                    IsEnabled="{Binding IsNotBusy}"
-                    Text="Replace with 5 items" />
 
+                <Label Text="Clear" />
+                <Grid ColumnDefinitions="*,*">
+                    <Button
+                        Grid.Column="0"
+                        Command="{Binding ClearCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Text="Sync" />
+                    <Button
+                        Grid.Column="1"
+                        Command="{Binding ClearAsyncCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Text="Async" />
+                </Grid>
 
-                <Button
-                    Margin="5"
-                    Command="{Binding ClearAsyncCommand}"
-                    IsEnabled="{Binding IsNotBusy}"
-                    Text="Clear items async" />
-                <Button
-                    Margin="5"
-                    Command="{Binding AddItemAsyncCommand}"
-                    IsEnabled="{Binding IsNotBusy}"
-                    Text="Add an item async" />
-                <Button
-                    Margin="5"
-                    Command="{Binding AddItemsAsyncCommand}"
-                    IsEnabled="{Binding IsNotBusy}"
-                    Text="Add 5 items async" />
-                <Button
-                    Margin="5"
-                    Command="{Binding ReplaceWithItemAsyncCommand}"
-                    IsEnabled="{Binding IsNotBusy}"
-                    Text="Replace with an item async" />
-                <Button
-                    Margin="5"
-                    Command="{Binding ReplaceWithItemsAsyncCommand}"
-                    IsEnabled="{Binding IsNotBusy}"
-                    Text="Replace with 5 items async" />
+                <Label Text="Add item" />
+                <Grid ColumnDefinitions="*,*">
+                    <Button
+                        Grid.Column="0"
+                        Command="{Binding AddItemCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Text="Sync" />
+                    <Button
+                        Grid.Column="1"
+                        Command="{Binding AddItemAsyncCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Text="Async" />
+                </Grid>
+
+                <Label Text="Add 5 items" />
+                <Grid ColumnDefinitions="*,*">
+                    <Button
+                        Grid.Column="0"
+                        Command="{Binding AddItemsCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Text="Sync" />
+                    <Button
+                        Grid.Column="1"
+                        Command="{Binding AddItemsAsyncCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Text="Async" />
+                </Grid>
+
+                <Label Text="Replace with an item" />
+                <Grid ColumnDefinitions="*,*">
+                    <Button
+                        Grid.Column="0"
+                        Command="{Binding ReplaceWithItemCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Text="Sync" />
+                    <Button
+                        Grid.Column="1"
+                        Command="{Binding ReplaceWithItemAsyncCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Text="Async" />
+                </Grid>
+
+                <Label Text="Replace with 5 items" />
+                <Grid ColumnDefinitions="*,*">
+                    <Button
+                        Grid.Column="0"
+                        Command="{Binding ReplaceWithItemsCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Text="Sync" />
+                    <Button
+                        Grid.Column="1"
+                        Command="{Binding ReplaceWithItemsAsyncCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Text="Async" />
+                </Grid>
 
                 <StackLayout BindableLayout.ItemsSource="{Binding Items}">
                     <BindableLayout.ItemTemplate>

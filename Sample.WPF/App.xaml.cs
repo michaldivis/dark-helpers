@@ -1,4 +1,5 @@
-﻿using DarkHelpers.Interfaces;
+﻿using DarkHelpers.Collections;
+using DarkHelpers.Interfaces;
 using DarkHelpers.WPF;
 using Sample.Lib;
 using Sample.Lib.ViewModels;
@@ -13,6 +14,8 @@ namespace Sample.WPF
         {
             InitializeFakeDiContainer();
             SetDefaultWindowStyle();
+
+            DarkObservableCollectionSettings.RegisterSynchronizer(new WpfDarkObservableCollectionSynchronizer());
 
             MainWindow = new HomeView(new HomeViewModel());
             MainWindow.Show();

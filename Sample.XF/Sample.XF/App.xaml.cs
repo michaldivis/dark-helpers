@@ -1,4 +1,5 @@
-﻿using DarkHelpers.Interfaces;
+﻿using DarkHelpers.Collections;
+using DarkHelpers.Interfaces;
 using DarkHelpers.XF;
 using Sample.Lib;
 using Sample.Lib.ViewModels;
@@ -12,6 +13,8 @@ namespace Sample.XF
         public App()
         {
             InitializeComponent();
+
+            DarkObservableCollectionSettings.RegisterSynchronizer(new XamarinFormsDarkObservableCollectionSynchronizer());
 
             InitializeFakeDiContainer();
 
