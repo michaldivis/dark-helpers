@@ -1,26 +1,35 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <Authors>Michal Diviš</Authors>
-    <Description>A collection of MVVM helpers for Xamarin.Forms</Description>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/michaldivis/DarkHelpers</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/michaldivis/DarkHelpers</RepositoryUrl>
-    <PackageReleaseNotes></PackageReleaseNotes>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageIcon>icon.png</PackageIcon>
-    <PackageId>Divis.DarkHelpers</PackageId>
-    <PackageTags>mvvm, xamarin.forms, wpf, command, observablecollection, navigation service</PackageTags>
-    <NeutralLanguage>en-US</NeutralLanguage>
-    <Version>0.1.6</Version>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0;netstandard2.1;netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
+		<LangVersion>8.0</LangVersion>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Include="assets\icon.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
+	<PropertyGroup>
+		<Authors>Michal Diviš</Authors>
+        <Description>A collection of MVVM helpers for Xamarin.Forms</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/michaldivis/DarkHelpers</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/michaldivis/DarkHelpers</RepositoryUrl>
+        <PackageReleaseNotes>More FireAndForget options, added targets</PackageReleaseNotes>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageIcon>icon.png</PackageIcon>
+        <PackageId>Divis.DarkHelpers</PackageId>
+        <PackageTags>mvvm, xamarin.forms, wpf, command, observablecollection, navigation service</PackageTags>
+        <NeutralLanguage>en-US</NeutralLanguage>
+        <Version>0.1.6</Version>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="assets\icon.png">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+    </ItemGroup>
 
 </Project>
