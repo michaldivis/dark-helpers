@@ -1,5 +1,5 @@
 ﻿using DarkHelpers.Commands;
-using DarkHelpers.Interfaces;
+using DarkHelpers.Abstractions;
 using System.Threading.Tasks;
 using Xunit;
 

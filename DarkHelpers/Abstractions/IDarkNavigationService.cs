@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace DarkHelpers.Interfaces
+namespace DarkHelpers.Abstractions
 {
     public interface IDarkNavigationService
     {

@@ -1,4 +1,4 @@
-﻿using DarkHelpers.Interfaces;
+﻿using DarkHelpers.Abstractions;
 
 namespace Sample.Lib
 {

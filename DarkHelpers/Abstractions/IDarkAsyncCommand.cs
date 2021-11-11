@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace DarkHelpers.Interfaces
+namespace DarkHelpers.Abstractions
 {
     /// <summary>
     /// Interface for Async Command

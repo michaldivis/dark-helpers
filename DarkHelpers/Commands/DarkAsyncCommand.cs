@@ -1,4 +1,4 @@
-﻿using DarkHelpers.Interfaces;
+﻿using DarkHelpers.Abstractions;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;

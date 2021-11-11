@@ -1,5 +1,5 @@
 ﻿using DarkHelpers.Collections;
-using DarkHelpers.Interfaces;
+using DarkHelpers.Abstractions;
 using DarkHelpers.XF;
 using Sample.Lib;
 using Sample.Lib.ViewModels;

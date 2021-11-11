@@ -115,7 +115,7 @@ It works like this:
 #### ViewModel & View registration
 Xamarin.Forms:
 ```csharp
-using DarkHelpers.Interfaces;
+using DarkHelpers.Abstractions;
 using DarkHelpers.XF;
 
 var nav = new DarkXfNavigationService();
@@ -128,7 +128,7 @@ someContainer.RegisterSingleton<IDarkNavigationService>(nav);
 
 WPF:
 ```csharp
-using DarkHelpers.Interfaces;
+using DarkHelpers.Abstractions;
 using DarkHelpers.WPF;
 
 var nav = new DarkWpfNavigationService();
