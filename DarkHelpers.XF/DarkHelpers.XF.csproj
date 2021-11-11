@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>0.1.5</Version>
+	<TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <Version>0.1.6</Version>
     <PackageId>Divis.DarkHelpers.XF</PackageId>
     <NeutralLanguage>en-US</NeutralLanguage>
     <Authors>Michal Diviš</Authors>
@@ -11,7 +11,7 @@
     <PackageIcon>icon.png</PackageIcon>
     <PackageProjectUrl>https://github.com/michaldivis/DarkHelpers</PackageProjectUrl>
     <PackageTags>mvvm, xamarin.forms, command, observablecollection, navigation service</PackageTags>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>added targets (netstandard2.0)</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 

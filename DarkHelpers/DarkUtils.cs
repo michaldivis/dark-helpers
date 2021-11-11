@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DarkHelpers.Abstractions;
+using System;
 using System.Threading.Tasks;
 
 namespace DarkHelpers
@@ -52,6 +53,26 @@ namespace DarkHelpers
 			catch (Exception ex) when (onException != null)
 			{
 				onException.Invoke(ex);
+			}
+		}
+
+#pragma warning disable RECS0165 // Asynchronous methods should return a Task instead of void
+		/// <summary>
+		/// Attempts to await on the task and catches exception
+		/// </summary>
+		/// <param name="task">Task to execute</param>
+		/// <param name="errorHandler">An error handler implementation that will handle possible exceptions</param>
+		/// <param name="continueOnCapturedContext">If the context should be captured.</param>
+		public static async void SafeFireAndForget(this Task task, ITaskErrorHandler errorHandler = null, bool continueOnCapturedContext = false)
+#pragma warning restore RECS0165 // Asynchronous methods should return a Task instead of void
+		{
+			try
+			{
+				await task.ConfigureAwait(continueOnCapturedContext);
+			}
+			catch (Exception ex) when (errorHandler != null)
+			{
+				errorHandler.Handle(ex);
 			}
 		}
 	}
