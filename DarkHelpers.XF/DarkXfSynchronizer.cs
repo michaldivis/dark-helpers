@@ -1,6 +1,7 @@
 ﻿using DarkHelpers.Collections;
 using System;
 using System.Collections;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace DarkHelpers.XF
@@ -14,7 +15,14 @@ namespace DarkHelpers.XF
 
         public void HandleAction(Action action)
         {
-            Device.BeginInvokeOnMainThread(action);
+            if (MainThread.IsMainThread)
+            {
+                action?.Invoke();
+            }
+            else
+            {
+                MainThread.BeginInvokeOnMainThread(action);
+            }
         }
 
         private void ObservableCollectionCallback(IEnumerable collection, object context, Action accessMethod, bool writeAccess)
