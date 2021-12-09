@@ -11,7 +11,7 @@
     <PackageIcon>icon.png</PackageIcon>
     <PackageProjectUrl>https://github.com/michaldivis/DarkHelpers</PackageProjectUrl>
     <PackageTags>mvvm, xamarin.forms, command, observablecollection, navigation service</PackageTags>
-    <PackageReleaseNotes>added targets (netstandard2.0)</PackageReleaseNotes>
+    <PackageReleaseNotes>DarkObservableCollection synchronization tweaks</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
