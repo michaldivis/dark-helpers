@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DarkHelpers.WPF\DarkHelpers.WPF.csproj" />
-    <ProjectReference Include="..\DarkHelpers\DarkHelpers.csproj" />
+    <ProjectReference Include="..\..\src\DarkHelpers.WPF\DarkHelpers.WPF.csproj" />
+    <ProjectReference Include="..\..\src\DarkHelpers\DarkHelpers.csproj" />
     <ProjectReference Include="..\Sample.Lib\Sample.Lib.csproj" />
   </ItemGroup>
 

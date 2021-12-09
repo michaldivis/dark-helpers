@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DarkHelpers\DarkHelpers.csproj" />
+    <ProjectReference Include="..\..\src\DarkHelpers\DarkHelpers.csproj" />
   </ItemGroup>
 
 </Project>

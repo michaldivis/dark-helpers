@@ -2,7 +2,7 @@
 
   <PropertyGroup>
 	<TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
-    <Version>0.1.6</Version>
+    <Version>0.1.7</Version>
     <PackageId>Divis.DarkHelpers.XF</PackageId>
     <NeutralLanguage>en-US</NeutralLanguage>
     <Authors>Michal Diviš</Authors>
@@ -11,11 +11,12 @@
     <PackageIcon>icon.png</PackageIcon>
     <PackageProjectUrl>https://github.com/michaldivis/DarkHelpers</PackageProjectUrl>
     <PackageTags>mvvm, xamarin.forms, command, observablecollection, navigation service</PackageTags>
-    <PackageReleaseNotes>added targets (netstandard2.0)</PackageReleaseNotes>
+    <PackageReleaseNotes>DarkObservableCollection synchronization tweaks</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.1874" />
   </ItemGroup>
 
