@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DarkHelpers", "DarkHelpers\DarkHelpers.csproj", "{325FD6BA-A93C-438F-859D-A2D24304532B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DarkHelpers", "src\DarkHelpers\DarkHelpers.csproj", "{325FD6BA-A93C-438F-859D-A2D24304532B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B1E0B231-C889-4156-AB5D-84EB65713D49}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{CED33661-341E-4098-92B4-B24D08C6D62C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.WPF", "Sample.WPF\Sample.WPF.csproj", "{5A4080F7-537D-4E21-BFE9-7233CEBD16C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.WPF", "samples\Sample.WPF\Sample.WPF.csproj", "{5A4080F7-537D-4E21-BFE9-7233CEBD16C8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution items", "solution items", "{2A67AF5E-E9B4-4183-966E-0ED3701DEAF9}"
 	ProjectSection(SolutionItems) = preProject
@@ -18,29 +18,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution items", "solution 
 		TODOLIST.md = TODOLIST.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DarkHelpers.WPF", "DarkHelpers.WPF\DarkHelpers.WPF.csproj", "{57C8DB5E-7931-4971-BB17-200D1FBF0078}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DarkHelpers.WPF", "src\DarkHelpers.WPF\DarkHelpers.WPF.csproj", "{57C8DB5E-7931-4971-BB17-200D1FBF0078}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.XF.Android", "Sample.XF\Sample.XF.Android\Sample.XF.Android.csproj", "{A2642045-E3B4-404A-94C1-F810E4424B84}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.XF.Android", "samples\Sample.XF\Sample.XF.Android\Sample.XF.Android.csproj", "{A2642045-E3B4-404A-94C1-F810E4424B84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.XF.iOS", "Sample.XF\Sample.XF.iOS\Sample.XF.iOS.csproj", "{5F867FA8-F10C-40D2-B517-22F3CA87258D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.XF.iOS", "samples\Sample.XF\Sample.XF.iOS\Sample.XF.iOS.csproj", "{5F867FA8-F10C-40D2-B517-22F3CA87258D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.XF", "Sample.XF\Sample.XF\Sample.XF.csproj", "{6075DA5B-C839-41B9-9D18-BDD5771B5C6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.XF", "samples\Sample.XF\Sample.XF\Sample.XF.csproj", "{6075DA5B-C839-41B9-9D18-BDD5771B5C6A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Lib", "Sample.Lib\Sample.Lib.csproj", "{1620165E-025E-4AD1-BD50-D91DC087B02D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Lib", "samples\Sample.Lib\Sample.Lib.csproj", "{1620165E-025E-4AD1-BD50-D91DC087B02D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DarkHelpers.XF", "DarkHelpers.XF\DarkHelpers.XF.csproj", "{F647E896-AEBF-449A-867D-89547CCD292C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DarkHelpers.XF", "src\DarkHelpers.XF\DarkHelpers.XF.csproj", "{F647E896-AEBF-449A-867D-89547CCD292C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DCDF5D3F-8C89-4CCA-86D0-1EB9609B347C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DarkHelpers.Tests", "DarkHelpers.Tests\DarkHelpers.Tests.csproj", "{5A26E722-60B1-4A1B-BD70-73B4E3309E52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DarkHelpers.Tests", "tests\DarkHelpers.Tests\DarkHelpers.Tests.csproj", "{5A26E722-60B1-4A1B-BD70-73B4E3309E52}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DarkHelpers.XF.Tests", "DarkHelpers.XF.Tests\DarkHelpers.XF.Tests.csproj", "{446BCF79-3BEB-4F8C-B08C-6FA7D9CF1AE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DarkHelpers.XF.Tests", "tests\DarkHelpers.XF.Tests\DarkHelpers.XF.Tests.csproj", "{446BCF79-3BEB-4F8C-B08C-6FA7D9CF1AE4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DarkHelpers.WPF.Tests", "DarkHelpers.WPF.Tests\DarkHelpers.WPF.Tests.csproj", "{030FB3D7-1729-441B-8B13-6FA2C90DDFFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DarkHelpers.WPF.Tests", "tests\DarkHelpers.WPF.Tests\DarkHelpers.WPF.Tests.csproj", "{030FB3D7-1729-441B-8B13-6FA2C90DDFFE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{AA124902-C091-4029-AD7C-F3B21C77B9B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkHelpersTemplates", "DarkHelpersTemplates\DarkHelpersTemplates.csproj", "{9769B205-EB2F-455B-9FF4-D2EE69E219E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkHelpersTemplates", "templates\DarkHelpersTemplates\DarkHelpersTemplates.csproj", "{9769B205-EB2F-455B-9FF4-D2EE69E219E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

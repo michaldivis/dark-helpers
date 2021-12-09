@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\DarkHelpers.XF\DarkHelpers.XF.csproj" />
-    <ProjectReference Include="..\..\DarkHelpers\DarkHelpers.csproj" />
+    <ProjectReference Include="..\..\..\src\DarkHelpers.XF\DarkHelpers.XF.csproj" />
+    <ProjectReference Include="..\..\..\src\DarkHelpers\DarkHelpers.csproj" />
     <ProjectReference Include="..\..\Sample.Lib\Sample.Lib.csproj" />
   </ItemGroup>
 
