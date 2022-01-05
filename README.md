@@ -241,3 +241,38 @@ namespace SomeApp.Views
     }
 }
 ```
+
+### Extensions
+#### SafeFireAndForget (for `Task`)
+Safely fire and forget a `Task` while being able to handle exceptions. Sometimes you don't care about waiting for a `Task` to complete or you can't await it (in an event). That's what this extension is for.
+```csharp
+using DarkHelpers;
+
+protected override void OnAppearing()
+{
+    //use an Action to handle exceptions
+    Action<Exception> errorHandler = (ex) => Console.WriteLine(ex);
+    DoSomethingAsync().SafeFireAndForget(errorHandler);
+
+    //or use the ITaskErrorHandler to handle exceptions
+    ITaskErrorHandler taskErrorHandler = null; //this might get injected by DI
+    DoSomethingAsync().SafeFireAndForget(taskErrorHandler);
+}
+
+private async Task DoSomethingAsync()
+{
+    //simulate work
+    await Task.Delay(500);
+}
+```
+
+#### TryExecute (for `ICommand`)
+This is useful for executing `ICommand`s manually. It checks the `CanExecute` and calls the `Execute` method if `CanExecute` returns `true`.
+
+```csharp
+using DarkHelpers;
+
+//this might be called from a code behind of a page if there's no option to bind the command in XAML
+Book book = null;
+viewModel.LoadItemCommand.TryExecute(book);
+```

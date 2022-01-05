@@ -1,13 +1,14 @@
 ﻿using DarkHelpers.Abstractions;
 using System;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace DarkHelpers
 {
     /// <summary>
     /// Extension Utils
     /// </summary>
-    public static class DarkUtils
+    public static class DarkExtensions
     {
 		/// <summary>
 		/// Task extension to add a timeout.
@@ -75,5 +76,23 @@ namespace DarkHelpers
 				errorHandler.Handle(ex);
 			}
 		}
+
+		/// <summary>
+		/// Checks if the <see cref="ICommand" /> can be executed, and if yes, executes it
+		/// </summary>
+		/// <param name="command"><see cref="ICommand" /> to execute</param>
+		/// <param name="parameter">Parameter to pass to the <see cref="ICommand" /></param>
+		public static void TryExecute(this ICommand command, object parameter)
+        {
+			if(command is null)
+            {
+				return;
+            }
+
+            if (command.CanExecute(parameter))
+            {
+				command.Execute(parameter);
+            }
+        }
 	}
 }
