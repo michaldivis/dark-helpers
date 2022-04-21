@@ -5,7 +5,7 @@
     <UseWPF>true</UseWPF>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Divis.DarkHelpers.WPF</PackageId>
-    <Version>0.1.9</Version>
+    <Version>0.1.10</Version>
     <Authors>Michal Diviš</Authors>
     <Product>DarkHelpers.WPF</Product>
     <Description>WPF implementations for the general DarkHelpers library</Description>
