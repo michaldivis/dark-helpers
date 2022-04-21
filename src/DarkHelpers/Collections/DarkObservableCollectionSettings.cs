@@ -4,7 +4,7 @@ namespace DarkHelpers.Collections
 {
     public static class DarkObservableCollectionSettings
     {
-        private static IDarkObservableCollectionSynchronizer _synchronizer;
+        private static IDarkObservableCollectionSynchronizer? _synchronizer;
 
         public static void RegisterSynchronizer<TSynchronizer>() where TSynchronizer : IDarkObservableCollectionSynchronizer, new()
         {
