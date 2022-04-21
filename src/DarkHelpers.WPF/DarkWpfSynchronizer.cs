@@ -6,14 +6,17 @@ namespace DarkHelpers.WPF
 {
     public class DarkWpfSynchronizer : IDarkObservableCollectionSynchronizer
     {
-        public void EnableSynchronization(IDarkObservableCollection collection)
+        public void EnableSynchronization(IDarkObservableCollection collection, object syncLock)
         {
-            BindingOperations.EnableCollectionSynchronization(collection, new object());
+            BindingOperations.EnableCollectionSynchronization(collection, syncLock);            
         }
 
-        public void HandleAction(Action action)
+        public void HandleAction(Action action, object syncLock)
         {
-            action?.Invoke();
+            lock (syncLock)
+            {
+                action?.Invoke();
+            }
         }
     }
 }

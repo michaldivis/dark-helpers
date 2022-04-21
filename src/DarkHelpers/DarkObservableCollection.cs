@@ -13,13 +13,15 @@ namespace DarkHelpers
 	/// <typeparam name="T"></typeparam> 
 	public class DarkObservableCollection<T> : ObservableCollection<T>, IDarkObservableCollection
 	{
+		private readonly object _syncLock = new object();
+
 		/// <summary> 
 		/// Initializes a new instance of the System.Collections.ObjectModel.ObservableCollection(Of T) class. 
 		/// </summary> 
 		public DarkObservableCollection()
 			: base()
 		{
-			DarkObservableCollectionSettings.GetSynchronizer().EnableSynchronization(this);
+			DarkObservableCollectionSettings.GetSynchronizer().EnableSynchronization(this, _syncLock);
 		}
 
 		/// <summary> 
@@ -30,22 +32,22 @@ namespace DarkHelpers
 		public DarkObservableCollection(IEnumerable<T> collection)
 			: base(collection)
 		{
-			DarkObservableCollectionSettings.GetSynchronizer().EnableSynchronization(this);
+			DarkObservableCollectionSettings.GetSynchronizer().EnableSynchronization(this, _syncLock);
 		}
 
 		public new void Clear()
 		{
-			DarkObservableCollectionSettings.GetSynchronizer().HandleAction(base.Clear);
+			DarkObservableCollectionSettings.GetSynchronizer().HandleAction(base.Clear, _syncLock);
 		}
 
 		public new void Add(T item)
         {
-			DarkObservableCollectionSettings.GetSynchronizer().HandleAction(() => base.Add(item));
+			DarkObservableCollectionSettings.GetSynchronizer().HandleAction(() => base.Add(item), _syncLock);
         }
 
 		public new void Remove(T item)
 		{
-			DarkObservableCollectionSettings.GetSynchronizer().HandleAction(() => base.Remove(item));
+			DarkObservableCollectionSettings.GetSynchronizer().HandleAction(() => base.Remove(item), _syncLock);
 		}
 
 		/// <summary> 
@@ -53,7 +55,7 @@ namespace DarkHelpers
 		/// </summary> 
 		public void AddRange(IEnumerable<T> collection, NotifyCollectionChangedAction notificationMode = NotifyCollectionChangedAction.Add)
 		{
-			DarkObservableCollectionSettings.GetSynchronizer().HandleAction(() => AddRangeInternal(collection, notificationMode));
+			DarkObservableCollectionSettings.GetSynchronizer().HandleAction(() => AddRangeInternal(collection, notificationMode), _syncLock);
 		}
 		
 		public void AddRangeInternal(IEnumerable<T> collection, NotifyCollectionChangedAction notificationMode = NotifyCollectionChangedAction.Add)
@@ -92,7 +94,7 @@ namespace DarkHelpers
 		/// </summary> 
 		public void RemoveRange(IEnumerable<T> collection, NotifyCollectionChangedAction notificationMode = NotifyCollectionChangedAction.Reset)
 		{
-			DarkObservableCollectionSettings.GetSynchronizer().HandleAction(() => RemoveRangeInternal(collection, notificationMode));
+			DarkObservableCollectionSettings.GetSynchronizer().HandleAction(() => RemoveRangeInternal(collection, notificationMode), _syncLock);
 		}
 		
 		public void RemoveRangeInternal(IEnumerable<T> collection, NotifyCollectionChangedAction notificationMode = NotifyCollectionChangedAction.Reset)
@@ -147,7 +149,7 @@ namespace DarkHelpers
 		/// </summary> 
 		public void ReplaceRange(IEnumerable<T> collection)
 		{
-			DarkObservableCollectionSettings.GetSynchronizer().HandleAction(() => ReplaceRangeInternal(collection));
+			DarkObservableCollectionSettings.GetSynchronizer().HandleAction(() => ReplaceRangeInternal(collection), _syncLock);
 		}
 		
 		public void ReplaceRangeInternal(IEnumerable<T> collection)
@@ -188,10 +190,6 @@ namespace DarkHelpers
 			OnPropertyChanged(new PropertyChangedEventArgs("Item[]"));
 
 			OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
-			//if (changedItems is null)
-			//	OnCollectionChanged(new NotifyCollectionChangedEventArgs(action));
-			//else
-			//	OnCollectionChanged(new NotifyCollectionChangedEventArgs(action, changedItems: changedItems, startingIndex: startingIndex));
 		}
-	}
+    }
 }

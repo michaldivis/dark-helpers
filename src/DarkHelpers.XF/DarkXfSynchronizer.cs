@@ -8,12 +8,12 @@ namespace DarkHelpers.XF
 {
     public class DarkXfSynchronizer : IDarkObservableCollectionSynchronizer
     {
-        public void EnableSynchronization(IDarkObservableCollection collection)
+        public void EnableSynchronization(IDarkObservableCollection collection, object syncLock)
         {
-            BindingBase.EnableCollectionSynchronization(collection, null, ObservableCollectionCallback);
+            BindingBase.EnableCollectionSynchronization(collection, syncLock, ObservableCollectionCallback);
         }
 
-        public void HandleAction(Action action)
+        public void HandleAction(Action action, object syncLock)
         {
             if (MainThread.IsMainThread)
             {
@@ -27,7 +27,7 @@ namespace DarkHelpers.XF
 
         private void ObservableCollectionCallback(IEnumerable collection, object context, Action accessMethod, bool writeAccess)
         {
-            lock (collection)
+            lock (context)
             {
                 accessMethod?.Invoke();
             }
