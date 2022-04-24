@@ -10,15 +10,23 @@ Status:
 
 ![Unit tests](https://github.com/michaldivis/DarkHelpers/workflows/Unit%20tests/badge.svg)
 
-## Nuget
-[![Nuget](https://img.shields.io/nuget/v/divis.darkhelpers?label=DarkHelpers)](https://www.nuget.org/packages/Divis.DarkHelpers/)
-[![Nuget](https://img.shields.io/nuget/v/divis.darkhelpers.xf?label=DarkHelpers.XF)](https://www.nuget.org/packages/Divis.DarkHelpers.XF/)
-[![Nuget](https://img.shields.io/nuget/v/divis.darkhelpers.wpf?label=DarkHelpers.WPF)](https://www.nuget.org/packages/Divis.DarkHelpers.WPF/)
-
 ## Packages
-- `DarkHelpers` - general package, includes all the interfaces and some implementations.
-- `DarkHelpers.XF` - platform specific implementations of base view and navigation service for Xamarin.Forms
-- `DarkHelpers.WPF` - platform specific implementations of base view and navigation service for WPF
+[![license](https://img.shields.io/github/license/michaldivis/DarkHelpers?color=black&label=license&logo=Github&style=flat-square)](https://github.com/michaldivis/DarkHelpers/blob/master/README.md) 
+
+### DarkHelpers
+General package, includes all the interfaces and some implementations.
+
+[![nuget](https://img.shields.io/nuget/v/Divis.DarkHelpers?label=version&color=black&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers) [![nuget](https://img.shields.io/nuget/dt/Divis.DarkHelpers?color=black&label=downloads&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers)
+
+### DarkHelpers.XF
+Platform specific implementations of base view and navigation service for Xamarin.Forms.
+
+[![nuget](https://img.shields.io/nuget/v/Divis.DarkHelpers.XF?label=version&color=black&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.XF) [![nuget](https://img.shields.io/nuget/dt/Divis.DarkHelpers.XF?color=black&label=downloads&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.XF)
+
+### DarkHelpers.WPF
+Platform specific implementations of base view and navigation service for WPF
+
+[![nuget](https://img.shields.io/nuget/v/Divis.DarkHelpers.WPF?label=version&color=black&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.WPF) [![nuget](https://img.shields.io/nuget/dt/Divis.DarkHelpers.WPF?color=black&label=downloads&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.WPF)
 
 ## Features
 
