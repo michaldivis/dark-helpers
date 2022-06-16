@@ -14,17 +14,17 @@ Status:
 [![license](https://img.shields.io/github/license/michaldivis/DarkHelpers?color=black&label=license&logo=Github&style=flat-square)](https://github.com/michaldivis/DarkHelpers/blob/master/README.md) 
 
 ### DarkHelpers
-General package, includes all the interfaces and some implementations.
+General package, includes all the interfaces and some shared implementations.
 
 [![nuget](https://img.shields.io/nuget/v/Divis.DarkHelpers?label=version&color=black&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers) [![nuget](https://img.shields.io/nuget/dt/Divis.DarkHelpers?color=black&label=downloads&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers)
 
 ### DarkHelpers.XF
-Platform specific implementations of base view and navigation service for Xamarin.Forms.
+Platform specific implementations (base view, navigation service, etc) for Xamarin.Forms.
 
 [![nuget](https://img.shields.io/nuget/v/Divis.DarkHelpers.XF?label=version&color=black&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.XF) [![nuget](https://img.shields.io/nuget/dt/Divis.DarkHelpers.XF?color=black&label=downloads&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.XF)
 
 ### DarkHelpers.WPF
-Platform specific implementations of base view and navigation service for WPF
+Platform specific implementations (base view, navigation service, etc) for WPF
 
 [![nuget](https://img.shields.io/nuget/v/Divis.DarkHelpers.WPF?label=version&color=black&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.WPF) [![nuget](https://img.shields.io/nuget/dt/Divis.DarkHelpers.WPF?color=black&label=downloads&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.WPF)
 
