@@ -285,8 +285,10 @@ Book book = null;
 viewModel.LoadItemCommand.TryExecute(book);
 ```
 
-### One-way converter base (for one-way IValueConverter implementaions)
-Simplified one-way converters with the `OneWayConverterBase` and `OneWayMultiConverterBase` classes.
+### Converter base classes
+Simplify your converters with the `DarkConverterBase` (`IValueConverter`) and `DarkMultiConverterBase` (`IMultiValueConverter`) base classes.
+
+Simply inherit from either of these base classes and only override the methods you need (`Convert` or `ConvertBack` or both). The rest will throw a verbose `NotSupportedException`.
 
 #### 
 Before:
@@ -305,14 +307,14 @@ public class ToUpperTextConverter : IValueConverter
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        throw new NotImplementedException();
+        throw new NotSupportedException($"The {nameof(ConvertBack)} method is not supported in {nameof(ToUpperTextConverter)}.");
     }
 }
 ```
 
 After:
 ```csharp
-public class ToUpperTextConverter : OneWayConverterBase
+public class ToUpperCaseTextConverter : DarkConverterBase
 {
     public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
