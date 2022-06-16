@@ -284,3 +284,44 @@ using DarkHelpers;
 Book book = null;
 viewModel.LoadItemCommand.TryExecute(book);
 ```
+
+### One-way converter base (for one-way IValueConverter implementaions)
+Simplified one-way converters with the `OneWayConverterBase` and `OneWayMultiConverterBase` classes.
+
+#### 
+Before:
+```csharp
+public class ToUpperTextConverter : IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        if(value is string text)
+        {
+            return text.ToUpper();
+        }
+
+        return value;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        throw new NotImplementedException();
+    }
+}
+```
+
+After:
+```csharp
+public class ToUpperTextConverter : OneWayConverterBase
+{
+    public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        if (value is string text)
+        {
+            return text.ToUpper();
+        }
+
+        return value;
+    }
+}
+```
