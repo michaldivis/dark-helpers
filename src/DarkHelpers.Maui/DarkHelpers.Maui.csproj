@@ -18,6 +18,21 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<Version>0.2.0</Version>
+		<PackageId>Divis.DarkHelpers.Maui</PackageId>
+		<NeutralLanguage>en-US</NeutralLanguage>
+		<Authors>Michal Diviš</Authors>
+		<Description>.NET MAUI implementations for the general DarkHelpers library</Description>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/michaldivis/DarkHelpers</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/michaldivis/DarkHelpers</RepositoryUrl>
+		<PackageTags>mvvm, maui, command, observablecollection, navigation service</PackageTags>
+		<PackageReleaseNotes></PackageReleaseNotes>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageIcon>icon.png</PackageIcon>
+	</PropertyGroup>
+
 	<ItemGroup>
 	  <ProjectReference Include="..\DarkHelpers\DarkHelpers.csproj" />
 	</ItemGroup>
@@ -28,6 +43,13 @@
 	  <Folder Include="Platforms\Windows\" />
 	  <Folder Include="Platforms\MacCatalyst\" />
 	  <Folder Include="Platforms\Tizen\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="..\DarkHelpers\assets\icon.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
 	</ItemGroup>
 
 </Project>
