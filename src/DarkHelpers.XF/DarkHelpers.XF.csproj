@@ -2,7 +2,7 @@
 
   <PropertyGroup>
 	<TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
-	<Version>0.2.0</Version>
+	<Version>0.2.1</Version>
     <PackageId>Divis.DarkHelpers.XF</PackageId>
     <NeutralLanguage>en-US</NeutralLanguage>
     <Authors>Michal Diviš</Authors>

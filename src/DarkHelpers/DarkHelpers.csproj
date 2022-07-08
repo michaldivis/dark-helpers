@@ -18,7 +18,7 @@
         <PackageId>Divis.DarkHelpers</PackageId>
         <PackageTags>mvvm, xamarin.forms, wpf, maui, command, observablecollection, navigation service</PackageTags>
         <NeutralLanguage>en-US</NeutralLanguage>
-		<Version>0.2.0</Version>
+		<Version>0.2.1</Version>
     </PropertyGroup>
 
     <ItemGroup>
