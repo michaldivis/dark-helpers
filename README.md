@@ -1,5 +1,5 @@
 # DarkHelpers
-A collection of MVVM helpers for Xamarin.Forms and WPF.
+A collection of MVVM helpers for Xamarin.Forms, .NET MAUI and WPF.
 
 I wanted to create this library for my self, however, I'll be stoked if anyone else finds it useful. Feel free to request more features or changes.
 
@@ -22,6 +22,11 @@ General package, includes all the interfaces and some shared implementations.
 Platform specific implementations (base view, navigation service, etc) for Xamarin.Forms.
 
 [![nuget](https://img.shields.io/nuget/v/Divis.DarkHelpers.XF?label=version&color=black&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.XF) [![nuget](https://img.shields.io/nuget/dt/Divis.DarkHelpers.XF?color=black&label=downloads&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.XF)
+
+### DarkHelpers.Maui
+Platform specific implementations (base view, navigation service, etc) for .NET MAUI.
+
+[![nuget](https://img.shields.io/nuget/v/Divis.DarkHelpers.Maui?label=version&color=black&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.Maui) [![nuget](https://img.shields.io/nuget/dt/Divis.DarkHelpers.Maui?color=black&label=downloads&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.Maui)
 
 ### DarkHelpers.WPF
 Platform specific implementations (base view, navigation service, etc) for WPF
@@ -66,12 +71,12 @@ Events (virtual methods):
 - `OnExitAsync` - To be called when a view is exiting, useful for any cleanup work
 
 Event support:
-|  | Xamarin.Forms | WPF |
-| ------------- | ------------- | ------------- |
-| `OnInitializeAsync` | Yes | Yes |
-| `OnRefreshAsync` | Yes | No |
-| `OnBeforeExitAsync` | No | Yes |
-| `OnExitAsync` | Yes | Yes |
+|  | .NET MAUI | Xamarin.Forms | WPF |
+| ------------- | ------------- | ------------- | ------------- |
+| `OnInitializeAsync` | Yes | Yes | Yes |
+| `OnRefreshAsync` | Yes | Yes | No |
+| `OnBeforeExitAsync` | No | No | Yes |
+| `OnExitAsync` | Yes | Yes | Yes |
 
 ### DarkObservableCollection
 A ObservableCollection that adds important methods such as: AddRange, RemoveRange, Replace, and ReplaceRange.
@@ -112,6 +117,18 @@ using DarkHelpers.Collections;
 }
 ```
 
+.NET MAUI (App.xaml.cs)
+```csharp
+using DarkHelpers.Collections;
+
+ public App()
+{
+    DarkObservableCollectionSettings.RegisterSynchronizer<DarkMauiSynchronizer>();
+
+    //other code
+}
+```
+
 ### IDarkNavigationService
 Navigate freely, even from a class library where you might be storing your view models.
 
@@ -127,6 +144,19 @@ using DarkHelpers.Abstractions;
 using DarkHelpers.XF;
 
 var nav = new DarkXfNavigationService();
+nav.Register<HomeViewModel, HomeView>();
+nav.Register<ObservableCollectionViewModel, ObservableCollectionView>();
+nav.Register<CommandsViewModel, CommandsView>();
+
+someContainer.RegisterSingleton<IDarkNavigationService>(nav);
+```
+
+.NET MAUI:
+```csharp
+using DarkHelpers.Abstractions;
+using DarkHelpers.Maui;
+
+var nav = new DarkMauiNavigationService();
 nav.Register<HomeViewModel, HomeView>();
 nav.Register<ObservableCollectionViewModel, ObservableCollectionView>();
 nav.Register<CommandsViewModel, CommandsView>();
@@ -249,6 +279,10 @@ namespace SomeApp.Views
     }
 }
 ```
+
+#### Creating a .NET MAUI view
+
+<em>To be added</em>
 
 ### Extensions
 #### SafeFireAndForget (for `Task`)
