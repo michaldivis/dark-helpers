@@ -1,5 +1,5 @@
 # DarkHelpers
-A collection of MVVM helpers for Xamarin.Forms and WPF.
+A collection of MVVM helpers for Xamarin.Forms, .NET MAUI and WPF.
 
 I wanted to create this library for my self, however, I'll be stoked if anyone else finds it useful. Feel free to request more features or changes.
 
@@ -10,15 +10,28 @@ Status:
 
 ![Unit tests](https://github.com/michaldivis/DarkHelpers/workflows/Unit%20tests/badge.svg)
 
-## Nuget
-[![Nuget](https://img.shields.io/nuget/v/divis.darkhelpers?label=DarkHelpers)](https://www.nuget.org/packages/Divis.DarkHelpers/)
-[![Nuget](https://img.shields.io/nuget/v/divis.darkhelpers.xf?label=DarkHelpers.XF)](https://www.nuget.org/packages/Divis.DarkHelpers.XF/)
-[![Nuget](https://img.shields.io/nuget/v/divis.darkhelpers.wpf?label=DarkHelpers.WPF)](https://www.nuget.org/packages/Divis.DarkHelpers.WPF/)
-
 ## Packages
-- `DarkHelpers` - general package, includes all the interfaces and some implementations.
-- `DarkHelpers.XF` - platform specific implementations of base view and navigation service for Xamarin.Forms
-- `DarkHelpers.WPF` - platform specific implementations of base view and navigation service for WPF
+[![license](https://img.shields.io/github/license/michaldivis/DarkHelpers?color=black&label=license&logo=Github&style=flat-square)](https://github.com/michaldivis/DarkHelpers/blob/master/README.md) 
+
+### DarkHelpers
+General package, includes all the interfaces and some shared implementations.
+
+[![nuget](https://img.shields.io/nuget/v/Divis.DarkHelpers?label=version&color=black&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers) [![nuget](https://img.shields.io/nuget/dt/Divis.DarkHelpers?color=black&label=downloads&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers)
+
+### DarkHelpers.XF
+Platform specific implementations (base view, navigation service, etc) for Xamarin.Forms.
+
+[![nuget](https://img.shields.io/nuget/v/Divis.DarkHelpers.XF?label=version&color=black&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.XF) [![nuget](https://img.shields.io/nuget/dt/Divis.DarkHelpers.XF?color=black&label=downloads&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.XF)
+
+### DarkHelpers.Maui
+Platform specific implementations (base view, navigation service, etc) for .NET MAUI.
+
+[![nuget](https://img.shields.io/nuget/v/Divis.DarkHelpers.Maui?label=version&color=black&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.Maui) [![nuget](https://img.shields.io/nuget/dt/Divis.DarkHelpers.Maui?color=black&label=downloads&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.Maui)
+
+### DarkHelpers.WPF
+Platform specific implementations (base view, navigation service, etc) for WPF
+
+[![nuget](https://img.shields.io/nuget/v/Divis.DarkHelpers.WPF?label=version&color=black&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.WPF) [![nuget](https://img.shields.io/nuget/dt/Divis.DarkHelpers.WPF?color=black&label=downloads&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.WPF)
 
 ## Features
 
@@ -58,12 +71,12 @@ Events (virtual methods):
 - `OnExitAsync` - To be called when a view is exiting, useful for any cleanup work
 
 Event support:
-|  | Xamarin.Forms | WPF |
-| ------------- | ------------- | ------------- |
-| `OnInitializeAsync` | Yes | Yes |
-| `OnRefreshAsync` | Yes | No |
-| `OnBeforeExitAsync` | No | Yes |
-| `OnExitAsync` | Yes | Yes |
+|  | .NET MAUI | Xamarin.Forms | WPF |
+| ------------- | ------------- | ------------- | ------------- |
+| `OnInitializeAsync` | Yes | Yes | Yes |
+| `OnRefreshAsync` | Yes | Yes | No |
+| `OnBeforeExitAsync` | No | No | Yes |
+| `OnExitAsync` | Yes | Yes | Yes |
 
 ### DarkObservableCollection
 A ObservableCollection that adds important methods such as: AddRange, RemoveRange, Replace, and ReplaceRange.
@@ -104,6 +117,18 @@ using DarkHelpers.Collections;
 }
 ```
 
+.NET MAUI (App.xaml.cs)
+```csharp
+using DarkHelpers.Collections;
+
+ public App()
+{
+    DarkObservableCollectionSettings.RegisterSynchronizer<DarkMauiSynchronizer>();
+
+    //other code
+}
+```
+
 ### IDarkNavigationService
 Navigate freely, even from a class library where you might be storing your view models.
 
@@ -119,6 +144,19 @@ using DarkHelpers.Abstractions;
 using DarkHelpers.XF;
 
 var nav = new DarkXfNavigationService();
+nav.Register<HomeViewModel, HomeView>();
+nav.Register<ObservableCollectionViewModel, ObservableCollectionView>();
+nav.Register<CommandsViewModel, CommandsView>();
+
+someContainer.RegisterSingleton<IDarkNavigationService>(nav);
+```
+
+.NET MAUI:
+```csharp
+using DarkHelpers.Abstractions;
+using DarkHelpers.Maui;
+
+var nav = new DarkMauiNavigationService();
 nav.Register<HomeViewModel, HomeView>();
 nav.Register<ObservableCollectionViewModel, ObservableCollectionView>();
 nav.Register<CommandsViewModel, CommandsView>();
@@ -242,6 +280,10 @@ namespace SomeApp.Views
 }
 ```
 
+#### Creating a .NET MAUI view
+
+<em>To be added</em>
+
 ### Extensions
 #### SafeFireAndForget (for `Task`)
 Safely fire and forget a `Task` while being able to handle exceptions. Sometimes you don't care about waiting for a `Task` to complete or you can't await it (in an event). That's what this extension is for.
@@ -275,4 +317,47 @@ using DarkHelpers;
 //this might be called from a code behind of a page if there's no option to bind the command in XAML
 Book book = null;
 viewModel.LoadItemCommand.TryExecute(book);
+```
+
+### Converter base classes
+Simplify your converters with the `DarkConverterBase` (`IValueConverter`) and `DarkMultiConverterBase` (`IMultiValueConverter`) base classes.
+
+Simply inherit from either of these base classes and only override the methods you need (`Convert` or `ConvertBack` or both). The rest will throw a verbose `NotSupportedException`.
+
+#### 
+Before:
+```csharp
+public class ToUpperTextConverter : IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        if(value is string text)
+        {
+            return text.ToUpper();
+        }
+
+        return value;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        throw new NotSupportedException($"The {nameof(ConvertBack)} method is not supported in {nameof(ToUpperTextConverter)}.");
+    }
+}
+```
+
+After:
+```csharp
+public class ToUpperCaseTextConverter : DarkConverterBase
+{
+    public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        if (value is string text)
+        {
+            return text.ToUpper();
+        }
+
+        return value;
+    }
+}
 ```

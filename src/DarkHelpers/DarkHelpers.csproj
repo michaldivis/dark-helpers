@@ -8,7 +8,7 @@
 
 	<PropertyGroup>
 		<Authors>Michal Diviš</Authors>
-        <Description>A collection of MVVM helpers for Xamarin.Forms</Description>
+        <Description>A collection of MVVM helpers for WPF, Xamarin.Forms and .NET MAUI</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/michaldivis/DarkHelpers</PackageProjectUrl>
         <RepositoryUrl>https://github.com/michaldivis/DarkHelpers</RepositoryUrl>
@@ -16,9 +16,9 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageIcon>icon.png</PackageIcon>
         <PackageId>Divis.DarkHelpers</PackageId>
-        <PackageTags>mvvm, xamarin.forms, wpf, command, observablecollection, navigation service</PackageTags>
+        <PackageTags>mvvm, xamarin.forms, wpf, maui, command, observablecollection, navigation service</PackageTags>
         <NeutralLanguage>en-US</NeutralLanguage>
-        <Version>0.1.9</Version>
+		<Version>0.2.0</Version>
     </PropertyGroup>
 
     <ItemGroup>

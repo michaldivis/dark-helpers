@@ -2,7 +2,7 @@
 
   <PropertyGroup>
 	<TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
-    <Version>0.1.9</Version>
+	<Version>0.2.0</Version>
     <PackageId>Divis.DarkHelpers.XF</PackageId>
     <NeutralLanguage>en-US</NeutralLanguage>
     <Authors>Michal Diviš</Authors>
@@ -10,6 +10,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <PackageProjectUrl>https://github.com/michaldivis/DarkHelpers</PackageProjectUrl>
+	<RepositoryUrl>https://github.com/michaldivis/DarkHelpers</RepositoryUrl>
     <PackageTags>mvvm, xamarin.forms, command, observablecollection, navigation service</PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

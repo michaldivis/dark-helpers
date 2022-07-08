@@ -13,6 +13,10 @@
     mc:Ignorable="d">
     <Border Padding="5">
         <WrapPanel>
+            <TextBlock
+                Margin="5"
+                Text="{Binding SomeText, Converter={StaticResource ToUpperCaseTextConverter}}"
+                TextWrapping="Wrap" />
             <Button
                 Margin="5"
                 Command="{Binding ObservableCollectionCommand}"

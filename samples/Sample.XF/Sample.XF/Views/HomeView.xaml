@@ -9,6 +9,7 @@
     x:TypeArguments="viewModels:HomeViewModel">
     <ContentPage.Content>
         <StackLayout Padding="10" Spacing="10">
+            <Label Margin="5" Text="{Binding SomeText, Converter={StaticResource ToUpperCaseTextConverter}}" />
             <Button
                 Margin="5"
                 Command="{Binding ObservableCollectionCommand}"

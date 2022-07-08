@@ -7,6 +7,8 @@ namespace Sample.Lib.ViewModels
 {
     public class HomeViewModel : DarkViewModel
     {
+        public string SomeText { get; } = "Hello! I am a piece of text that has been turned to upper case using an IValueConverter.";
+
         public ICommand ObservableCollectionCommand => new DarkAsyncCommand(OpenObservableCollectionAsync);
         public ICommand CommandsCommand => new DarkAsyncCommand(OpenCommandsAsync);
 
