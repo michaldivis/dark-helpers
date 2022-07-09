@@ -49,6 +49,8 @@
     <Compile Include="DarkHelpersTemplatesPackage.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="DarkHelpers.Maui.ViewCsharp.zip" />
+    <None Include="DarkHelpers.Maui.ViewXaml.zip" />
     <None Include="DarkHelpers.WPF.View.zip" />
     <None Include="DarkHelpers.XF.View.zip" />
     <Content Include="ItemTemplates\DarkHelpers.WPF.View.zip">
@@ -56,6 +58,14 @@
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="ItemTemplates\DarkHelpers.XF.View.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="ItemTemplates\DarkHelpers.Maui.ViewCsharp.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="ItemTemplates\DarkHelpers.Maui.ViewXaml.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
