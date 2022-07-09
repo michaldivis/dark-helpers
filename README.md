@@ -19,8 +19,8 @@ General package, includes all the interfaces and some shared implementations.
 Install-Package Divis.DarkHelpers
 ```
 
-[![nuget](https://img.shields.io/nuget/v/Divis.DarkHelpers.WPF?label=Divis.DarkHelpers.WPF&color=black&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.WPF) [![nuget](https://img.shields.io/nuget/dt/Divis.DarkHelpers.WPF?color=black&label=downloads&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.WPF)
-Platform specific implementations (base view, navigation service, etc) for WPF.\
+[![nuget](https://img.shields.io/nuget/v/Divis.DarkHelpers.WPF?label=Divis.DarkHelpers.WPF&color=black&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.WPF) [![nuget](https://img.shields.io/nuget/dt/Divis.DarkHelpers.WPF?color=black&label=downloads&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.WPF)\
+Platform specific implementations (base view, navigation service, etc) for WPF.
 ```powershell
 Install-Package Divis.DarkHelpers.WPF
 ```
