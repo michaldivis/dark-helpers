@@ -82,7 +82,7 @@ namespace DarkHelpers
 		/// </summary>
 		/// <param name="command"><see cref="ICommand" /> to execute</param>
 		/// <param name="parameter">Parameter to pass to the <see cref="ICommand" /></param>
-		public static void TryExecute(this ICommand command, object parameter)
+		public static void TryExecute(this ICommand command, object? parameter = null)
         {
 			if(command is null)
             {
