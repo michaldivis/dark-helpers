@@ -14,7 +14,7 @@
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/michaldivis/DarkHelpers</RepositoryUrl>
     <PackageTags>mvvm, wpf, command, observablecollection, navigation service</PackageTags>
-    <PackageReleaseNotes></PackageReleaseNotes>
+	<PackageReleaseNotes>See https://github.com/michaldivis/DarkHelpers/releases</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
 

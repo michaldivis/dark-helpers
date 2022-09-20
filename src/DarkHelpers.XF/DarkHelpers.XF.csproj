@@ -12,7 +12,7 @@
     <PackageProjectUrl>https://github.com/michaldivis/DarkHelpers</PackageProjectUrl>
 	<RepositoryUrl>https://github.com/michaldivis/DarkHelpers</RepositoryUrl>
     <PackageTags>mvvm, xamarin.forms, command, observablecollection, navigation service</PackageTags>
-    <PackageReleaseNotes></PackageReleaseNotes>
+	<PackageReleaseNotes>See https://github.com/michaldivis/DarkHelpers/releases</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
