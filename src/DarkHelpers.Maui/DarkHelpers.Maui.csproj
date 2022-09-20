@@ -19,7 +19,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Version>1.0.0</Version>
+		<Version>1.0.1</Version>
 		<PackageId>Divis.DarkHelpers.Maui</PackageId>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<Authors>Michal Diviš</Authors>
