@@ -147,12 +147,17 @@ namespace DarkHelpers
             RemoveEventHandler(eventName, handler.Target, handler.GetMethodInfo());
 		}
 
-		void AddEventHandler(string eventName, object? handlerTarget, MethodInfo methodInfo)
+		void AddEventHandler(string eventName, object? handlerTarget, MethodInfo? methodInfo)
 		{
 			if (!eventHandlers.TryGetValue(eventName, out var targets))
 			{
 				targets = new List<Subscription>();
 				eventHandlers.Add(eventName, targets);
+			}
+
+			if(methodInfo is null)
+			{
+				return;
 			}
 
 			if (handlerTarget is null)
@@ -165,9 +170,14 @@ namespace DarkHelpers
 			targets.Add(new Subscription(new WeakReference(handlerTarget), methodInfo));
 		}
 
-		void RemoveEventHandler(string eventName, object? handlerTarget, MemberInfo methodInfo)
+		void RemoveEventHandler(string eventName, object? handlerTarget, MemberInfo? methodInfo)
 		{
 			if (!eventHandlers.TryGetValue(eventName, out var subscriptions))
+            {
+                return;
+            }
+
+            if (methodInfo is null)
             {
                 return;
             }
