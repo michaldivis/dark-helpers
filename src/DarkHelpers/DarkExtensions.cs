@@ -64,7 +64,7 @@ namespace DarkHelpers
 		/// <param name="task">Task to execute</param>
 		/// <param name="errorHandler">An error handler implementation that will handle possible exceptions</param>
 		/// <param name="continueOnCapturedContext">If the context should be captured.</param>
-		public static async void SafeFireAndForget(this Task task, ITaskErrorHandler errorHandler = null, bool continueOnCapturedContext = false)
+		public static async void SafeFireAndForget(this Task task, ITaskErrorHandler? errorHandler = null, bool continueOnCapturedContext = false)
 #pragma warning restore RECS0165 // Asynchronous methods should return a Task instead of void
 		{
 			try
