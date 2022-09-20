@@ -108,7 +108,7 @@ class Build : NukeBuild
     #region WPF
 
     Target RestoreWpf => _ => _
-        .DependsOn(RunCoreTests)
+        .DependsOn(PackCore)
         .Executes(() =>
         {
             DotNetRestore(s => s
@@ -163,7 +163,7 @@ class Build : NukeBuild
     #region XF
 
     Target RestoreXf => _ => _
-        .DependsOn(RunCoreTests)
+        .DependsOn(PackCore)
         .Executes(() =>
         {
             DotNetRestore(s => s
@@ -218,7 +218,7 @@ class Build : NukeBuild
     #region Maui
 
     Target RestoreMaui => _ => _
-        .DependsOn(RunCoreTests)
+        .DependsOn(PackCore)
         .Executes(() =>
         {
             DotNetRestore(s => s
