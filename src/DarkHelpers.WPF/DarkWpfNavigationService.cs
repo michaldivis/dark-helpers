@@ -7,13 +7,6 @@ namespace DarkHelpers.WPF
 {
     public class DarkWpfNavigationService : DarkNavigationServiceBase, IDarkNavigationService
     {
-        private readonly DarkWpfNavigationHandler _darkNavigationHandler;
-
-        public DarkWpfNavigationService()
-        {
-            _darkNavigationHandler = new DarkWpfNavigationHandler();
-        }
-
         public void Register<TViewModel, TView>() where TViewModel : DarkViewModel where TView : DarkWpfViewBase<TViewModel>
         {
             _registeredTypes.Add(typeof(TViewModel), typeof(TView));
@@ -29,12 +22,17 @@ namespace DarkHelpers.WPF
         {
             await viewModel.OnInitializeAsync();
             var page = GetViewByViewModel(viewModel);
-            await _darkNavigationHandler.PushAsync(page as Window);
+
+            if(page is Window window)
+            {
+                DarkWpfNavigationHandler.Push(window);
+            }
         }
 
-        public async Task PopAsync()
+        public Task PopAsync()
         {
-            await _darkNavigationHandler.PopAsync();
+            DarkWpfNavigationHandler.Pop();
+            return Task.CompletedTask;
         }
     }
 }
