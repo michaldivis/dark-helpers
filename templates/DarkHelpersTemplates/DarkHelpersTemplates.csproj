@@ -49,6 +49,8 @@
     <Compile Include="DarkHelpersTemplatesPackage.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="DarkHelpers.Maui.ViewCsharp.zip" />
+    <None Include="DarkHelpers.Maui.ViewXaml.zip" />
     <None Include="DarkHelpers.WPF.View.zip" />
     <None Include="DarkHelpers.XF.View.zip" />
     <Content Include="ItemTemplates\DarkHelpers.WPF.View.zip">
@@ -56,6 +58,14 @@
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="ItemTemplates\DarkHelpers.XF.View.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="ItemTemplates\DarkHelpers.Maui.ViewCsharp.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="ItemTemplates\DarkHelpers.Maui.ViewXaml.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
@@ -67,8 +77,13 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.SDK" Version="16.0.206" ExcludeAssets="runtime" />
-    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="16.8.3038" />
+    <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.2.32505.173" ExcludeAssets="runtime">
+      <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.2.2186">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="DarkHelpers.Templates.ico">

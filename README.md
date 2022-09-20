@@ -1,5 +1,5 @@
 # DarkHelpers
-A collection of MVVM helpers for Xamarin.Forms, .NET MAUI and WPF.
+A collection of MVVM helpers for WPF, Xamarin.Forms and .NET MAUI.
 
 I wanted to create this library for my self, however, I'll be stoked if anyone else finds it useful. Feel free to request more features or changes.
 
@@ -9,29 +9,33 @@ I've used the `ObservableObject`, `ObservableRangeCollection` and `ICommand` imp
 Status:
 
 ![Unit tests](https://github.com/michaldivis/DarkHelpers/workflows/Unit%20tests/badge.svg)
+[![license](https://img.shields.io/github/license/michaldivis/DarkHelpers?color=black&label=license&logo=Github&style=flat-square)](https://github.com/michaldivis/DarkHelpers/blob/master/README.md)
 
 ## Packages
-[![license](https://img.shields.io/github/license/michaldivis/DarkHelpers?color=black&label=license&logo=Github&style=flat-square)](https://github.com/michaldivis/DarkHelpers/blob/master/README.md) 
 
-### DarkHelpers
+[![nuget](https://img.shields.io/nuget/v/Divis.DarkHelpers?label=Divis.DarkHelpers&color=black&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers) [![nuget](https://img.shields.io/nuget/dt/Divis.DarkHelpers?color=black&label=downloads&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers)\
 General package, includes all the interfaces and some shared implementations.
+```powershell
+Install-Package Divis.DarkHelpers
+```
 
-[![nuget](https://img.shields.io/nuget/v/Divis.DarkHelpers?label=version&color=black&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers) [![nuget](https://img.shields.io/nuget/dt/Divis.DarkHelpers?color=black&label=downloads&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers)
+[![nuget](https://img.shields.io/nuget/v/Divis.DarkHelpers.WPF?label=Divis.DarkHelpers.WPF&color=black&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.WPF) [![nuget](https://img.shields.io/nuget/dt/Divis.DarkHelpers.WPF?color=black&label=downloads&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.WPF)\
+Platform specific implementations (base view, navigation service, etc) for WPF.
+```powershell
+Install-Package Divis.DarkHelpers.WPF
+```
 
-### DarkHelpers.XF
+[![nuget](https://img.shields.io/nuget/v/Divis.DarkHelpers.XF?label=Divis.DarkHelpers.XF&color=black&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.XF) [![nuget](https://img.shields.io/nuget/dt/Divis.DarkHelpers.XF?color=black&label=downloads&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.XF)\
 Platform specific implementations (base view, navigation service, etc) for Xamarin.Forms.
+```powershell
+Install-Package Divis.DarkHelpers.XF
+```
 
-[![nuget](https://img.shields.io/nuget/v/Divis.DarkHelpers.XF?label=version&color=black&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.XF) [![nuget](https://img.shields.io/nuget/dt/Divis.DarkHelpers.XF?color=black&label=downloads&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.XF)
-
-### DarkHelpers.Maui
+[![nuget](https://img.shields.io/nuget/v/Divis.DarkHelpers.Maui?label=Divis.DarkHelpers.Maui&color=black&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.Maui) [![nuget](https://img.shields.io/nuget/dt/Divis.DarkHelpers.Maui?color=black&label=downloads&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.Maui)\
 Platform specific implementations (base view, navigation service, etc) for .NET MAUI.
-
-[![nuget](https://img.shields.io/nuget/v/Divis.DarkHelpers.Maui?label=version&color=black&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.Maui) [![nuget](https://img.shields.io/nuget/dt/Divis.DarkHelpers.Maui?color=black&label=downloads&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.Maui)
-
-### DarkHelpers.WPF
-Platform specific implementations (base view, navigation service, etc) for WPF
-
-[![nuget](https://img.shields.io/nuget/v/Divis.DarkHelpers.WPF?label=version&color=black&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.WPF) [![nuget](https://img.shields.io/nuget/dt/Divis.DarkHelpers.WPF?color=black&label=downloads&logo=NuGet&style=flat-square)](https://www.nuget.org/packages/Divis.DarkHelpers.WPF)
+```powershell
+Install-Package Divis.DarkHelpers.Maui
+```
 
 ## Features
 
@@ -71,11 +75,11 @@ Events (virtual methods):
 - `OnExitAsync` - To be called when a view is exiting, useful for any cleanup work
 
 Event support:
-|  | .NET MAUI | Xamarin.Forms | WPF |
+|  | WPF | Xamarin.Forms | .NET MAUI |
 | ------------- | ------------- | ------------- | ------------- |
 | `OnInitializeAsync` | Yes | Yes | Yes |
-| `OnRefreshAsync` | Yes | Yes | No |
-| `OnBeforeExitAsync` | No | No | Yes |
+| `OnRefreshAsync` | No | Yes | Yes |
+| `OnBeforeExitAsync` | Yes | No | No |
 | `OnExitAsync` | Yes | Yes | Yes |
 
 ### DarkObservableCollection
@@ -109,7 +113,7 @@ Xamarin.Forms (App.xaml.cs)
 ```csharp
 using DarkHelpers.Collections;
 
- public App()
+public App()
 {
     DarkObservableCollectionSettings.RegisterSynchronizer<DarkXfSynchronizer>();
 
@@ -121,7 +125,7 @@ using DarkHelpers.Collections;
 ```csharp
 using DarkHelpers.Collections;
 
- public App()
+public App()
 {
     DarkObservableCollectionSettings.RegisterSynchronizer<DarkMauiSynchronizer>();
 
@@ -138,6 +142,19 @@ It works like this:
 - only use the `IDarkNavigationService` instance to perform navigation 
 
 #### ViewModel & View registration
+WPF:
+```csharp
+using DarkHelpers.Abstractions;
+using DarkHelpers.WPF;
+
+var nav = new DarkWpfNavigationService();
+nav.Register<HomeViewModel, HomeView>();
+nav.Register<ObservableCollectionViewModel, ObservableCollectionView>();
+nav.Register<CommandsViewModel, CommandsView>();
+
+someContainer.RegisterSingleton<IDarkNavigationService>(nav);
+```
+
 Xamarin.Forms:
 ```csharp
 using DarkHelpers.Abstractions;
@@ -164,19 +181,6 @@ nav.Register<CommandsViewModel, CommandsView>();
 someContainer.RegisterSingleton<IDarkNavigationService>(nav);
 ```
 
-WPF:
-```csharp
-using DarkHelpers.Abstractions;
-using DarkHelpers.WPF;
-
-var nav = new DarkWpfNavigationService();
-nav.Register<HomeViewModel, HomeView>();
-nav.Register<ObservableCollectionViewModel, ObservableCollectionView>();
-nav.Register<CommandsViewModel, CommandsView>();
-
-someContainer.RegisterSingleton<IDarkNavigationService>(nav);
-```
-
 #### Usage
 ```csharp
 using DarkHelpers;
@@ -196,7 +200,7 @@ Synchronous and asynchronous ICommand implementations, plus a DarkEventManager t
 
 Custom base view that allows the navigation by view model.
 
-*NOTE: you can now use my Visual Studio extension that contains view templates for both WPF and Xamarin.Forms for easier view creation. The extension can be found [HERE](https://marketplace.visualstudio.com/items?itemName=michaldivis.DarkHelpersTemplates)*
+*NOTE: you can now use my Visual Studio extension that contains view templates for WPF, Xamarin.Forms and .NET MAUI for easier view creation. The extension can be found [HERE](https://marketplace.visualstudio.com/items?itemName=michaldivis.DarkHelpersTemplates)*
 
 #### Creating a WPF view
 
@@ -281,8 +285,38 @@ namespace SomeApp.Views
 ```
 
 #### Creating a .NET MAUI view
+SomeView.xaml
+```xaml
+<?xml version="1.0" encoding="utf-8" ?>
+<darkViews:DarkMauiViewBase
+    x:Class="Sample.Maui.Views.SomeView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:darkViews="clr-namespace:DarkHelpers.Maui;assembly=DarkHelpers.Maui"
+    xmlns:viewModels="clr-namespace:SomeApp.ViewModels;assembly=SomeApp"
+    Title="Home"
+    x:TypeArguments="viewModels:SomeViewModel">
+    <VerticalStackLayout>
+        <Label Text="Hey!" />
+    </VerticalStackLayout>
+</darkViews:DarkMauiViewBase>
+```
 
-<em>To be added</em>
+SomeView.xaml.cs
+```csharp
+using DarkHelpers.Maui;
+using SomeApp.ViewModels;
+
+namespace SomeApp.Views;
+
+public partial class SomeView : DarkMauiViewBase<SomeViewModel>
+{
+	public SomeView(SomeViewModel vm) : base(vm)
+	{
+		InitializeComponent();
+	}
+}
+```
 
 ### Extensions
 #### SafeFireAndForget (for `Task`)

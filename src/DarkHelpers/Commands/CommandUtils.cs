@@ -6,16 +6,19 @@ namespace DarkHelpers.Commands
 {
     internal static class CommandUtils
 	{
-		internal static bool IsValidCommandParameter<T>(object o)
+		internal static bool IsValidCommandParameter<T>(object? o)
 		{
 			bool valid;
+
 			if (o != null)
 			{
 				// The parameter isn't null, so we don't have to worry whether null is a valid option
 				valid = o is T;
 
 				if (!valid)
-					throw new InvalidCommandParameterException(typeof(T), o.GetType());
+				{
+                    throw new InvalidCommandParameterException(typeof(T), o.GetType());
+                }
 
 				return valid;
 			}
@@ -32,7 +35,9 @@ namespace DarkHelpers.Commands
 			valid = !t.GetTypeInfo().IsValueType;
 
 			if (!valid)
-				throw new InvalidCommandParameterException(typeof(T));
+			{
+                throw new InvalidCommandParameterException(typeof(T));
+            }
 
 			return valid;
 		}

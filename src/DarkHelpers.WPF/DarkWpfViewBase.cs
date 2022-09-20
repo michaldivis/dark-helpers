@@ -6,7 +6,7 @@ namespace DarkHelpers.WPF
 {
     public abstract class DarkWpfViewBase : Window
     {
-        public static Action<Window> WindowStyler = null;
+        public static Action<Window>? WindowStyler { get; set; } = null;
 
         public DarkWpfViewBase()
         {

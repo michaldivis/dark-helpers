@@ -10,11 +10,11 @@ namespace DarkHelpers.Commands
     /// </summary>
     public class DarkAsyncCommand : IDarkAsyncCommand
 	{
-		readonly Func<Task> execute;
-		readonly Func<object, bool>? canExecute;
-		readonly Action<Exception>? onException;
-		readonly bool continueOnCapturedContext;
-		readonly DarkEventManager weakEventManager = new DarkEventManager();
+		readonly Func<Task> _execute;
+		readonly Func<object?, bool>? _canExecute;
+		readonly Action<Exception>? _onException;
+		readonly bool _continueOnCapturedContext;
+		readonly DarkEventManager _weakEventManager = new();
 
 		/// <summary>
 		/// Create a new AsyncCommand
@@ -24,23 +24,23 @@ namespace DarkHelpers.Commands
 		/// <param name="onException">Action callback when an exception occurs</param>
 		/// <param name="continueOnCapturedContext">If the context should be captured on exception</param>
 		public DarkAsyncCommand(Func<Task> execute,
-							Func<object, bool>? canExecute = null,
+							Func<object?, bool>? canExecute = null,
 							Action<Exception>? onException = null,
 							bool continueOnCapturedContext = false)
 		{
-			this.execute = execute ?? throw new ArgumentNullException(nameof(execute));
-			this.canExecute = canExecute;
-			this.onException = onException;
-			this.continueOnCapturedContext = continueOnCapturedContext;
+			_execute = execute ?? throw new ArgumentNullException(nameof(execute));
+			_canExecute = canExecute;
+			_onException = onException;
+			_continueOnCapturedContext = continueOnCapturedContext;
 		}
 
 		/// <summary>
 		/// Event triggered when Can Excecute changes.
 		/// </summary>
-		public event EventHandler CanExecuteChanged
+		public event EventHandler? CanExecuteChanged
 		{
-			add { weakEventManager.AddEventHandler(value); }
-			remove { weakEventManager.RemoveEventHandler(value); }
+			add { _weakEventManager.AddEventHandler(value); }
+			remove { _weakEventManager.RemoveEventHandler(value); }
 		}
 
 		/// <summary>
@@ -48,21 +48,21 @@ namespace DarkHelpers.Commands
 		/// </summary>
 		/// <param name="parameter">Parameter to pass to CanExecute.</param>
 		/// <returns>If it can be executed.</returns>
-		public bool CanExecute(object parameter) => canExecute?.Invoke(parameter) ?? true;
+		public bool CanExecute(object? parameter) => _canExecute?.Invoke(parameter) ?? true;
 
 		/// <summary>
 		/// Execute the command async.
 		/// </summary>
 		/// <returns>Task of action being executed that can be awaited.</returns>
-		public Task ExecuteAsync() => execute();
+		public Task ExecuteAsync() => _execute();
 
 		/// <summary>
 		/// Raise a CanExecute change event.
 		/// </summary>
-		public void RaiseCanExecuteChanged() => weakEventManager.HandleEvent(this, EventArgs.Empty, nameof(CanExecuteChanged));
+		public void RaiseCanExecuteChanged() => _weakEventManager.HandleEvent(this, EventArgs.Empty, nameof(CanExecuteChanged));
 
 		#region Explicit implementations
-		void ICommand.Execute(object parameter) => ExecuteAsync().SafeFireAndForget(onException, continueOnCapturedContext);
+		void ICommand.Execute(object? parameter) => ExecuteAsync().SafeFireAndForget(_onException, _continueOnCapturedContext);
 		#endregion
 	}
 
@@ -72,11 +72,11 @@ namespace DarkHelpers.Commands
 	public class DarkAsyncCommand<T> : IDarkAsyncCommand<T>
 	{
 
-		readonly Func<T, Task> execute;
-		readonly Func<object, bool>? canExecute;
-		readonly Action<Exception>? onException;
-		readonly bool continueOnCapturedContext;
-		readonly DarkEventManager weakEventManager = new DarkEventManager();
+		readonly Func<T?, Task> _execute;
+		readonly Func<object?, bool>? _canExecute;
+		readonly Action<Exception>? _onException;
+		readonly bool _continueOnCapturedContext;
+		readonly DarkEventManager _weakEventManager = new();
 
 		/// <summary>
 		/// Create a new AsyncCommand
@@ -85,24 +85,24 @@ namespace DarkHelpers.Commands
 		/// <param name="canExecute">Function to call to determine if it can be executed</param>
 		/// <param name="onException">Action callback when an exception occurs</param>
 		/// <param name="continueOnCapturedContext">If the context should be captured on exception</param>
-		public DarkAsyncCommand(Func<T, Task> execute,
-							Func<object, bool>? canExecute = null,
+		public DarkAsyncCommand(Func<T?, Task> execute,
+							Func<object?, bool>? canExecute = null,
 							Action<Exception>? onException = null,
 							bool continueOnCapturedContext = false)
 		{
-			this.execute = execute ?? throw new ArgumentNullException(nameof(execute));
-			this.canExecute = canExecute;
-			this.onException = onException;
-			this.continueOnCapturedContext = continueOnCapturedContext;
+			_execute = execute ?? throw new ArgumentNullException(nameof(execute));
+			_canExecute = canExecute;
+			_onException = onException;
+			_continueOnCapturedContext = continueOnCapturedContext;
 		}
 
 		/// <summary>
 		/// Event triggered when Can Excecute changes.
 		/// </summary>
-		public event EventHandler CanExecuteChanged
+		public event EventHandler? CanExecuteChanged
 		{
-			add { weakEventManager.AddEventHandler(value); }
-			remove { weakEventManager.RemoveEventHandler(value); }
+			add { _weakEventManager.AddEventHandler(value); }
+			remove { _weakEventManager.RemoveEventHandler(value); }
 		}
 
 		/// <summary>
@@ -110,27 +110,30 @@ namespace DarkHelpers.Commands
 		/// </summary>
 		/// <param name="parameter">Parameter to pass to CanExecute.</param>
 		/// <returns>If it can be executed</returns>
-		public bool CanExecute(object parameter) => canExecute?.Invoke(parameter) ?? true;
+		public bool CanExecute(object? parameter) => _canExecute?.Invoke(parameter) ?? true;
 
 		/// <summary>
 		/// Execute the command async.
 		/// </summary>
 		/// <returns>Task that is executing and can be awaited.</returns>
-		public Task ExecuteAsync(T parameter) => execute(parameter);
+		public Task ExecuteAsync(T? parameter) => _execute(parameter);
 
 		/// <summary>
 		/// Raise a CanExecute change event.
 		/// </summary>
-		public void RaiseCanExecuteChanged() => weakEventManager.HandleEvent(this, EventArgs.Empty, nameof(CanExecuteChanged));
+		public void RaiseCanExecuteChanged() => _weakEventManager.HandleEvent(this, EventArgs.Empty, nameof(CanExecuteChanged));
 
 		#region Explicit implementations
 
-		void ICommand.Execute(object parameter)
+		void ICommand.Execute(object? parameter)
 		{
-			if (CommandUtils.IsValidCommandParameter<T>(parameter))
-				ExecuteAsync((T)parameter).SafeFireAndForget(onException, continueOnCapturedContext);
+			if (!CommandUtils.IsValidCommandParameter<T>(parameter))
+			{
+				return;
+            }
 
-		}
+            ExecuteAsync((T?)parameter).SafeFireAndForget(_onException, _continueOnCapturedContext);
+        }
 		#endregion
 	}
 }

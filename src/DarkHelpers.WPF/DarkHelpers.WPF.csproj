@@ -2,10 +2,11 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0-windows;net6.0-windows</TargetFrameworks>
+	<Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Divis.DarkHelpers.WPF</PackageId>
-    <Version>0.2.0</Version>
+    <Version>1.0.0</Version>
     <Authors>Michal Diviš</Authors>
     <Product>DarkHelpers.WPF</Product>
     <Description>WPF implementations for the general DarkHelpers library</Description>
@@ -14,7 +15,7 @@
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/michaldivis/DarkHelpers</RepositoryUrl>
     <PackageTags>mvvm, wpf, command, observablecollection, navigation service</PackageTags>
-    <PackageReleaseNotes></PackageReleaseNotes>
+	<PackageReleaseNotes>See https://github.com/michaldivis/DarkHelpers/releases</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
 

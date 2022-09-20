@@ -39,7 +39,7 @@ namespace DarkHelpers
 		/// </summary>
 		/// <param name="handler">Handler of the event</param>
 		/// <param name="eventName">Name to use in the dictionary. Should be unique.</param>
-		public void AddEventHandler(EventHandler handler, [CallerMemberName] string eventName = "")
+		public void AddEventHandler(EventHandler? handler, [CallerMemberName] string eventName = "")
 		{
 			if (string.IsNullOrEmpty(eventName))
             {
@@ -132,7 +132,7 @@ namespace DarkHelpers
 		/// </summary>
 		/// <param name="handler">Handler to remove</param>
 		/// <param name="eventName">Event name to remove</param>
-		public void RemoveEventHandler(EventHandler handler, [CallerMemberName] string eventName = "")
+		public void RemoveEventHandler(EventHandler? handler, [CallerMemberName] string eventName = "")
 		{
 			if (string.IsNullOrEmpty(eventName))
             {
@@ -147,12 +147,17 @@ namespace DarkHelpers
             RemoveEventHandler(eventName, handler.Target, handler.GetMethodInfo());
 		}
 
-		void AddEventHandler(string eventName, object handlerTarget, MethodInfo methodInfo)
+		void AddEventHandler(string eventName, object? handlerTarget, MethodInfo? methodInfo)
 		{
 			if (!eventHandlers.TryGetValue(eventName, out var targets))
 			{
 				targets = new List<Subscription>();
 				eventHandlers.Add(eventName, targets);
+			}
+
+			if(methodInfo is null)
+			{
+				return;
 			}
 
 			if (handlerTarget is null)
@@ -165,9 +170,14 @@ namespace DarkHelpers
 			targets.Add(new Subscription(new WeakReference(handlerTarget), methodInfo));
 		}
 
-		void RemoveEventHandler(string eventName, object handlerTarget, MemberInfo methodInfo)
+		void RemoveEventHandler(string eventName, object? handlerTarget, MemberInfo? methodInfo)
 		{
 			if (!eventHandlers.TryGetValue(eventName, out var subscriptions))
+            {
+                return;
+            }
+
+            if (methodInfo is null)
             {
                 return;
             }

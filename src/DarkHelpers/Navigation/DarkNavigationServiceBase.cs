@@ -5,11 +5,11 @@ namespace DarkHelpers.Navigation
 {
     public class DarkNavigationServiceBase
     {
-        protected readonly Dictionary<Type, Type> _registeredTypes = new Dictionary<Type, Type>();
+        protected readonly Dictionary<Type, Type> _registeredTypes = new();
 
         protected object GetViewByViewModel<TViewModel>(TViewModel viewModel) where TViewModel : DarkViewModel
         {
-            if(viewModel == null)
+            if(viewModel is null)
             {
                 throw new ArgumentNullException(nameof(viewModel), "ViewModel can't be null");
             }
@@ -17,7 +17,7 @@ namespace DarkHelpers.Navigation
             var viewModelType = viewModel.GetType();
             var viewModelTypeFound = _registeredTypes.TryGetValue(viewModelType, out var viewType);
 
-            if (!viewModelTypeFound)
+            if (!viewModelTypeFound || viewType is null)
             {
                 throw new Exception($"No view has been registered for the VM class {typeof(TViewModel)}. Make sure to register it via the {nameof(GetViewByViewModel)} method first.");
             }
