@@ -5,13 +5,6 @@ namespace DarkHelpers.Maui;
 
 public class DarkMauiNavigationService : DarkNavigationServiceBase, IDarkNavigationService
 {
-    private readonly DarkMauiNavigationHandler _darkNavigationHandler;
-
-    public DarkMauiNavigationService()
-    {
-        _darkNavigationHandler = new DarkMauiNavigationHandler();
-    }
-
     public void Register<TViewModel, TView>() where TViewModel : DarkViewModel where TView : DarkMauiViewBase<TViewModel>
     {
         _registeredTypes.Add(typeof(TViewModel), typeof(TView));
@@ -27,11 +20,15 @@ public class DarkMauiNavigationService : DarkNavigationServiceBase, IDarkNavigat
     {
         await viewModel.OnInitializeAsync();
         var page = GetViewByViewModel(viewModel);
-        await _darkNavigationHandler.PushAsync(page as ContentPage);
+
+        if(page is ContentPage contentPage)
+        {
+            await DarkMauiNavigationHandler.PushAsync(contentPage);
+        }
     }
 
     public async Task PopAsync()
     {
-        await _darkNavigationHandler.PopAsync();
+        await DarkMauiNavigationHandler.PopAsync();
     }
 }

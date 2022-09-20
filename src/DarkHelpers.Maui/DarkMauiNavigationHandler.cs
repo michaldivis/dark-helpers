@@ -2,18 +2,32 @@
 
 internal class DarkMauiNavigationHandler
 {
-    private INavigation GetNavigation()
+    private static INavigation? GetNavigation()
     {
-        return Application.Current.MainPage.Navigation;
+        return Application.Current?.MainPage?.Navigation;
     }
 
-    public async Task PopAsync()
+    public static async Task PopAsync()
     {
-        _ = await GetNavigation().PopAsync();
+        var nav = GetNavigation();
+
+        if(nav is null)
+        {
+            return;
+        }
+
+        _ = await nav.PopAsync();
     }
 
-    public async Task PushAsync<TView>(TView view) where TView : ContentPage
+    public static async Task PushAsync<TView>(TView view) where TView : ContentPage
     {
-        await GetNavigation().PushAsync(view);
+        var nav = GetNavigation();
+
+        if (nav is null)
+        {
+            return;
+        }
+
+        await nav.PushAsync(view);
     }
 }
